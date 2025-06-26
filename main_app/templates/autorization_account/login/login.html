@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<!-- templates/autorization_account/login/login.html -->
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h2>Вход в систему</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {{ form.username_or_email.label_tag }}<br>
+            {{ form.username_or_email }}
+        </div>
+        <div>
+            {{ form.password.label_tag }}<br>
+            {{ form.password }}
+        </div>
+        <button type="submit">Войти</button>
+    </form>
+    {% if form.errors %}
+        <div style="color:red;">
+            {{ form.errors }}
+        </div>
+    {% endif %}
+</body>
+</html>
