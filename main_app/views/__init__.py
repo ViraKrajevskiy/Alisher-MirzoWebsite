@@ -1,0 +1,3 @@
+from .registration_and_log.confirm_email_view import confirm_email_view
+from .registration_and_log.log_registration import generate_code,register_view,login_view,logout_view,home_view
+from .registration_and_log.resend_code_view import resend_code_view

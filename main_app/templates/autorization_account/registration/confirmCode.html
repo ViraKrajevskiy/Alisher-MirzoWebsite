@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Подтверждение Email</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-header">
+            <h2>Подтверждение Email</h2>
+            <p>Введите код, отправленный на ваш email</p>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p class="form-errors">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Код подтверждения</label>
+                <input type="text" name="code" required>
+            </div>
+            <button type="submit" class="btn">Подтвердить</button>
+        </form>
+
+        <form method="get" action="{% url 'resend_code' %}">
+            <button type="submit" class="btn" style="background: var(--secondary-color);">Отправить код повторно</button>
+        </form>
+    </div>
+</body>
+</html>

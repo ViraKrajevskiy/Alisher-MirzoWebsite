@@ -1,17 +1,75 @@
 <!DOCTYPE html>
+<!-- templates/autorization_account/registration/registration.html -->
 {% load static %}
-<html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Регистрация</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/registration.css' %}">
 </head>
 <body>
-    <h2>Регистрация</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Зарегистрироваться</button>
-    </form>
-    <a href="{% url 'login' %}">Уже есть аккаунт? Войти</a>
+    <div class="auth-container">
+        <div class="auth-header">
+            <h2>Создать аккаунт</h2>
+            <p>Заполните форму для регистрации</p>
+        </div>
+
+        {% if form.errors %}
+        <div class="form-errors">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="post" class="auth-form" id="registrationForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">Имя пользователя</label>
+                <input type="text" name="username" id="id_username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_email">Email</label>
+                <input type="email" name="email" id="id_email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_phone_number">Номер телефона</label>
+                <input type="text" name="phone_number" id="id_phone_number" placeholder="+998XXXXXXXXX">
+            </div>
+
+            <div class="form-group password-container">
+                <label for="id_password">Пароль</label>
+                <input type="password" name="password" id="id_password" required>
+                <button type="button" class="password-toggle">👁️</button>
+                <div class="password-strength">
+                    <div class="strength-bar" id="strength-bar"></div>
+                    <span class="strength-text" id="strength-text"></span>
+                </div>
+                <small class="password-hint">Минимум 8 символов</small>
+            </div>
+
+            <div class="form-group password-container">
+                <label for="id_confirm_password">Подтвердите пароль</label>
+                <input type="password" name="confirm_password" id="id_confirm_password" required>
+                <button type="button" class="password-toggle">👁️</button>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn">Зарегистрироваться</button>
+        </form>
+
+        <div class="auth-footer">
+            Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
+        </div>
+    </div>
+
+    <script src="{% static 'js/registration.js' %}"></script>
 </body>
 </html>

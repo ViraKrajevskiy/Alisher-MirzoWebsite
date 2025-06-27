@@ -48,6 +48,8 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
         message="Номер телефона должен быть в формате +998XXXXXXXX!"
     )
 
+    confirmation_code = models.CharField(max_length=6, null=True, blank=True)
+    code_created_at = models.DateTimeField(null=True, blank=True)
     username = models.CharField(max_length=150, unique=True)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(
@@ -71,7 +73,7 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']  # email уже обязателен
+    REQUIRED_FIELDS = ['username']
 
     def __str__(self):
         return f"{self.get_role_display()} — {self.email} — {self.username}"

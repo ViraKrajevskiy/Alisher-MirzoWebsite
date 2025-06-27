@@ -1,10 +1,21 @@
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = 'django-insecure-2pc5_dpchh@-8ubklng!5^9l&-5@n(*40!x9b9d7&9wb8-_qh+'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = 'alishermirzowork@gmail.com'          # ← твоя почта
+EMAIL_HOST_PASSWORD = 'eilk ywwf mmay gtba'    # ← тот 16-значный пароль
+DEFAULT_FROM_EMAIL = 'Your App Name <your_gmail@gmail.com>'
 
 
 DEBUG = True
@@ -23,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main_app',
     'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -41,7 +53,6 @@ REST_FRAMEWORK = {
     )
 }
 
-import os
 
 MEDIA_URL = '/media/'  # URL, по которому будут доступны медиафайлы
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Физическая папка на диске
@@ -65,6 +76,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+
 
 
 # Database
