@@ -72,8 +72,9 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
 
     objects = CustomUserManager()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
+
 
     def __str__(self):
         return f"{self.get_role_display()} — {self.email} — {self.username}"

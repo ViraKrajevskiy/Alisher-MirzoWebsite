@@ -3,7 +3,7 @@ from main_app.views.registration_and_log.log_registration import generate_code
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from django.utils import timezone
-from main_app.models.base_user.user import User
+
 
 def resend_code_view(request):
     data = request.session.get('registration_data')

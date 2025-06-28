@@ -3,13 +3,12 @@
 {% load static %}
 <html lang="ru">
 <head>
-    
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Вход в систему</title>
-
+    <link rel="stylesheet" href="{% static 'css/loginfile/login.css' %}">
 </head>
+<script src="{% static 'js/loginjs/login.js' %}"></script>
 <body>
     <div class="auth-container">
         <div class="auth-header">
@@ -26,17 +25,18 @@
         <form method="post" class="auth-form">
             {% csrf_token %}
             <div class="form-group">
-                <label for="id_username_or_email">Email или Имя пользователя</label>
-                <input type="text" name="username_or_email" id="id_username_or_email" required autofocus>
+                <label for="id_username">Email или Имя пользователя</label>
+                <input type="text" name="username" id="id_username" required>
             </div>
 
             <div class="form-group">
                 <label for="id_password">Пароль</label>
                 <input type="password" name="password" id="id_password" required>
-                <a href="#" style="display: block; text-align: right; margin-top: 5px; font-size: 14px; color: var(--primary-color);">Забыли пароль?</a>
+                <span class="password-toggle">👁️</span>
+                <a href="#" class="forgot-password">Забыли пароль?</a>
             </div>
 
-            <button type="submit" class="btn btn-animate">Войти</button>
+            <button type="submit" class="btn">Войти</button>
         </form>
 
         <div class="auth-footer">

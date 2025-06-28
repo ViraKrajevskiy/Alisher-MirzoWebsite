@@ -15,7 +15,8 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'alishermirzowork@gmail.com'          # ← твоя почта
 EMAIL_HOST_PASSWORD = 'eilk ywwf mmay gtba'    # ← тот 16-значный пароль
-DEFAULT_FROM_EMAIL = 'Your App Name <your_gmail@gmail.com>'
+DEFAULT_FROM_EMAIL = 'ARTIST WRITER <alishermirzowork@gmail.com>'
+
 
 
 DEBUG = True
@@ -52,6 +53,11 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
+AUTHENTICATION_BACKENDS = [
+    'main_app.backends.UsernameOrEmailBackend',  # Замените на ваш реальный путь
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 
 MEDIA_URL = '/media/'  # URL, по которому будут доступны медиафайлы

@@ -1,12 +1,265 @@
+<!--<!DOCTYPE html>-->
+<!--{% load static %}-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Главная</title>-->
+<!--    &lt;!&ndash;<link rel="stylesheet" href="{% static 'css/style.css' %}">&ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h2>Добро пожаловать, {{ request.user.username }}</h2>-->
+<!--    <a href="{% url 'logout' %}">Выйти</a>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 {% load static %}
-<html>
+<html lang="ru">
 <head>
-    <title>Главная</title>
-    <!--<link rel="stylesheet" href="{% static 'css/style.css' %}">-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алишер Мирзо | Главная</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Иконки Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('{% static "images/artist-bg.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+        }
+        .artwork-card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        .artwork-card:hover {
+            transform: scale(1.03);
+        }
+        .scrolling-wrapper {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 20px 0;
+        }
+        .scrolling-wrapper .card {
+            display: inline-block;
+            width: 300px;
+            margin-right: 15px;
+            white-space: normal;
+        }
+        .section-title {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Добро пожаловать, {{ request.user.username }}</h2>
-    <a href="{% url 'logout' %}">Выйти</a>
+    <!-- Навигационная панель -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Алишер Мирзо</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Главная</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                            Меню
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#biography">Биография</a></li>
+                            <li><a class="dropdown-item" href="#artworks">Картины</a></li>
+                            <li><a class="dropdown-item" href="#albums">Альбомы</a></li>
+                            <li><a class="dropdown-item" href="#books">Книги</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                {% if request.user.is_authenticated %}
+                <span class="navbar-text me-3">
+                    Добро пожаловать, {{ request.user.username }}
+                </span>
+                <a href="{% url 'logout' %}" class="btn btn-outline-light">Выйти</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой-секция с фото художника -->
+    <header class="hero-section mt-5">
+        <div class="container text-center">
+            <img src="{% static 'images/alisher-mirzo.jpg' %}" class="rounded-circle mb-4" width="200" alt="Алишер Мирзо">
+            <h1 class="display-4">Алишер Мирзо</h1>
+            <p class="lead">Современный художник и мыслитель</p>
+        </div>
+    </header>
+
+    <!-- Основное содержание -->
+    <div class="container my-5">
+        <!-- Краткая биография -->
+        <section id="biography" class="mb-5">
+            <h2 class="section-title">Биография</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Алишер Мирзо - современный художник, родившийся 15 марта 1985 года в Ташкенте, Узбекистан. С раннего детства проявлял интерес к искусству, начав рисовать в возрасте 5 лет.</p>
+                    <p>Окончил Национальный институт художеств и дизайна имени Камолиддина Бехзода в 2007 году. Его работы сочетают традиционные восточные мотивы с современными техниками.</p>
+                    <p>Участник более 50 международных выставок. Его работы находятся в частных коллекциях по всему миру.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Ключевые даты</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>1985</strong> - Родился в Ташкенте</li>
+                                <li class="list-group-item"><strong>2007</strong> - Окончил институт искусств</li>
+                                <li class="list-group-item"><strong>2010</strong> - Первая персональная выставка</li>
+                                <li class="list-group-item"><strong>2015</strong> - Международное признание</li>
+                                <li class="list-group-item"><strong>2020</strong> - Издана первая книга</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Галерея картин -->
+        <section id="artworks" class="mb-5">
+            <h2 class="section-title">Картины автора</h2>
+            <div class="scrolling-wrapper">
+                {% for artwork in artworks %}
+                <div class="card artwork-card">
+                    <img src="{% static artwork.image %}" class="card-img-top" alt="{{ artwork.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ artwork.title }}</h5>
+                        <p class="card-text">{{ artwork.year }}</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#artworkModal{{ forloop.counter }}">Подробнее</a>
+                    </div>
+                </div>
+
+                <!-- Модальное окно для картины -->
+                <div class="modal fade" id="artworkModal{{ forloop.counter }}" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">{{ artwork.title }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="{% static artwork.image %}" class="img-fluid mb-3" alt="{{ artwork.title }}">
+                                <p><strong>Год создания:</strong> {{ artwork.year }}</p>
+                                <p><strong>Техника:</strong> {{ artwork.technique }}</p>
+                                <p><strong>Размеры:</strong> {{ artwork.dimensions }}</p>
+                                <p>{{ artwork.description }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Альбомы -->
+        <section id="albums" class="mb-5">
+            <h2 class="section-title">Альбомы</h2>
+            <p>Алишер Мирзо выпустил несколько альбомов, в которых собраны его лучшие работы за разные периоды творчества. Каждый альбом представляет собой тематическую подборку картин с авторскими комментариями.</p>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for album in albums %}
+                <div class="col">
+                    <div class="card h-100 artwork-card">
+                        <img src="{% static album.cover %}" class="card-img-top" alt="{{ album.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ album.title }}</h5>
+                            <p class="card-text">{{ album.year }} · {{ album.pages }} страниц</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-outline-primary">Посмотреть альбом</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Книги -->
+        <section id="books">
+            <h2 class="section-title">Книги</h2>
+            <p>Помимо художественных работ, Алишер Мирзо является автором нескольких книг об искусстве и философии творчества.</p>
+
+            <div class="row">
+                {% for book in books %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{% static book.cover %}" class="img-fluid rounded-start h-100" alt="{{ book.title }}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ book.title }}</h5>
+                                    <p class="card-text"><small class="text-muted">{{ book.year }} · {{ book.pages }} стр.</small></p>
+                                    <p class="card-text">{{ book.short_description }}</p>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Читать фрагмент</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Алишер Мирзо</h5>
+                    <p>Официальный сайт художника</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <h5>Контакты</h5>
+                    <p>email: info@alishermirzo.art<br>Телефон: +998 90 123 45 67</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3">
+                <p class="mb-0">&copy; 2023 Алишер Мирзо. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Активация всплывающих подсказок
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>

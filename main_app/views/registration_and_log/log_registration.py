@@ -42,25 +42,26 @@ def register_view(request):
     return render(request, 'autorization_account/registration/registration.html', {'form': form})
 
 
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+
 def login_view(request):
-    if request.user.is_authenticated:
-        return redirect('home')
-
     if request.method == 'POST':
-        form = UsernameOrEmailLoginForm(request.POST, request=request)
-        if form.is_valid():
-            user = form.get_user()
+        username = request.POST.get('username')  # Теперь используем 'username' вместо 'username_or_email'
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
             login(request, user)
-            return redirect('home')
+            return redirect('home')  # Или ваш целевой URL
         else:
-            # Добавляем более информативные сообщения об ошибках
-            for error in form.errors.values():
-                messages.error(request, error)
-    else:
-        form = UsernameOrEmailLoginForm()
+            # Добавляем ошибку в контекст
+            return render(request, 'autorization_account/login/login.html', {
+                'form_errors': True
+            })
 
-    return render(request, 'autorization_account/login/login.html', {'form': form})
-
+    return render(request, 'autorization_account/login/login.html')
 def logout_view(request):
     logout(request)
     return redirect('login')
