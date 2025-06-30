@@ -1,11 +1,16 @@
 from pathlib import Path
 import os
+from decouple import config
+
+
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', default=False, cast=bool)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-SECRET_KEY = 'django-insecure-2pc5_dpchh@-8ubklng!5^9l&-5@n(*40!x9b9d7&9wb8-_qh+'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -19,9 +24,6 @@ DEFAULT_FROM_EMAIL = 'ARTIST WRITER <alishermirzowork@gmail.com>'
 
 
 
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition

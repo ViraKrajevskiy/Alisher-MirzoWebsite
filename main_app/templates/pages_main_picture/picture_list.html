@@ -1,0 +1,22 @@
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">Все картины</h2>
+    <div class="row g-4">
+        {% for artwork in pictures %}
+        <div class="col-md-4 col-lg-3">
+            <div class="card h-100">
+                <a href="{{ artwork.picture.url }}" target="_blank">
+                    <img src="{{ artwork.picture.url }}" class="card-img-top" alt="{{ artwork.title }}">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ artwork.title }}</h5>
+                    <p class="card-text text-muted">{{ artwork.date_made|date:"Y" }} · {{ artwork.style }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

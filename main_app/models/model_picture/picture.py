@@ -3,6 +3,7 @@ from main_app.models.base_user.user import BaseModel,User
 
 class Picture(BaseModel):
     title = models.CharField(max_length=40)
+    style = models.CharField(max_length=60)
     date_made = models.DateTimeField()
     description_photo = models.TextField()
     picture = models.ImageField(upload_to='pictures/images/')
