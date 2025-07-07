@@ -1,225 +1,143 @@
-/* Основные переменные и стили */
-:root {
-    --primary-color: #5a3e36;
-    --primary-dark: #3b2a26;
-    --primary-light: #d2b48c;
-    --secondary-color: #a18f7f;
-    --accent-color: #f6e27f;
-    --light-color: #fdfaf6;
-    --dark-color: #2c2c2c;
-    --gray-dark: #6c6c6c;
-    --gray-medium: #aaa;
-    --gray-light: #eae7e1;
-    --error-color: #c0392b;
-    --success-color: #27ae60;
-    --warning-color: #f39c12;
-    --border-radius: 12px;
-    --box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+.fancy-font {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 1.5rem;
 }
 
-/* Основные стили */
-body {
-    font-family: 'Georgia', serif;
-    background-color: var(--light-color);
-    color: var(--dark-color);
-    padding-top: 56px; /* Для фиксированного navbar */
+.artist-photo {
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
 
-/* Навигационная панель */
+.artist-photo:hover {
+    transform: scale(1.02);
+}
+
+/* Стили для скролл-галерей */
+.scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 15px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+}
+
+.scroll-item {
+    display: inline-block;
+    margin-right: 15px;
+    width: 200px;
+    white-space: normal;
+    transition: transform 0.3s ease;
+}
+
+.scroll-item:hover {
+    transform: translateY(-5px);
+}
+
+.scroll-item img {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для формы контактов */
+.contact-form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form .form-control {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+}
+
+.contact-form .btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form .btn-primary:hover {
+    background-color: #0b5ed7;
+}
+
+/* Стили для навбара */
 .navbar {
-    background-color: var(--primary-color) !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
-    font-weight: 700;
-    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
-.navbar .nav-link,
-.navbar .navbar-brand {
-    color: var(--light-color) !important;
-    transition: var(--transition);
-}
-
-.navbar .nav-link:hover,
-.navbar .nav-link.active {
-    color: var(--accent-color) !important;
-}
-
-.dropdown-menu {
-    border-radius: var(--border-radius);
-    border: none;
-    box-shadow: var(--box-shadow);
-}
-
-/* Герой-секция */
-.hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('../images/artist-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: white;
-    padding: 120px 0;
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.hero-section img {
-    border: 4px solid var(--accent-color);
-    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
-}
-
-/* Секции */
-.section-title {
-    position: relative;
-    padding-bottom: 15px;
-    margin-bottom: 30px;
-    color: var(--primary-dark);
-}
-
-.section-title:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background-color: var(--accent-color);
-}
-
-/* Карточки */
-.card {
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
-    border: none;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-}
-
-.card-img-top {
-    object-fit: cover;
-    height: 200px;
-}
-
-/* Кнопки */
-.btn {
-    border-radius: 50px;
-    padding: 8px 20px;
+.nav-link {
     font-weight: 500;
-    transition: var(--transition);
+    padding: 8px 15px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
-.btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-dark);
+.nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
-.btn-primary:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-2px);
-}
-
-.btn-outline-primary {
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-.btn-outline-primary:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-/* Галерея с горизонтальной прокруткой */
-.scrolling-wrapper {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 20px 0;
-    -webkit-overflow-scrolling: touch;
-}
-
-.scrolling-wrapper::-webkit-scrollbar {
-    height: 8px;
-}
-
-.scrolling-wrapper::-webkit-scrollbar-track {
-    background: var(--gray-light);
-    border-radius: 10px;
-}
-
-.scrolling-wrapper::-webkit-scrollbar-thumb {
-    background: var(--secondary-color);
-    border-radius: 10px;
-}
-
-.scrolling-wrapper .card {
-    display: inline-block;
-    width: 280px;
-    margin-right: 20px;
-    white-space: normal;
-}
-
-/* Модальные окна */
-.modal-content {
-    border-radius: var(--border-radius);
-    border: none;
-}
-
-.modal-header {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.modal-footer {
-    border-top: none;
-}
-
-/* Футер */
+/* Стили для футера */
 footer {
-    background-color: var(--primary-dark);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+footer a {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
     color: white;
-    margin-top: 60px;
 }
 
-.social-links a {
-    font-size: 1.2rem;
-    transition: var(--transition);
-}
-
-.social-links a:hover {
-    color: var(--accent-color) !important;
-    transform: translateY(-3px);
-}
-
-/* Анимации */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
-}
-
-/* Адаптивность */
+/* Адаптивные стили */
 @media (max-width: 768px) {
-    .hero-section {
-        padding: 80px 0;
+    .artist-photo {
+        max-height: 400px;
+        margin-top: 20px;
     }
 
-    .hero-section h1 {
-        font-size: 2.5rem;
+    .scroll-item {
+        width: 150px;
     }
 
-    .scrolling-wrapper .card {
-        width: 240px;
+    .scroll-item img {
+        height: 150px;
+    }
+
+    .fancy-font {
+        font-size: 1.2rem;
+    }
+
+    .contact-form {
+        margin-bottom: 30px;
     }
 }

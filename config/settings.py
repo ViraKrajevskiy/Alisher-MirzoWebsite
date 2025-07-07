@@ -5,7 +5,7 @@ from decouple import config
 
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,10 +21,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'alishermirzowork@gmail.com'          # ← твоя почта
 EMAIL_HOST_PASSWORD = 'eilk ywwf mmay gtba'    # ← тот 16-значный пароль
 DEFAULT_FROM_EMAIL = 'ARTIST WRITER <alishermirzowork@gmail.com>'
-
-
-
-
 
 # Application definition
 
@@ -117,6 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -142,7 +140,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Если хочешь использовать свои дополнительные директории
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [BASE_DIR / 'main_app' / 'static']
+
 
 
 

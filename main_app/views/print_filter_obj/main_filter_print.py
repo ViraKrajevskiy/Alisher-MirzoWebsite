@@ -1,17 +1,9 @@
-
 from django.shortcuts import render, get_object_or_404
-
 from main_app.models.model_albums.albums import Album, ComentAlbum
 from main_app.models.model_book.book import Book, ComentBook
 from main_app.models.model_news.news import News, Comment
 from main_app.models.model_picture.picture import Picture, CommentPicture
 from django.shortcuts import render
-from collections import defaultdict
-
-
-def main_page(request):
-    featured_artworks = Picture.objects.all()
-    return render(request, 'main_page/main_site.html', {'featured_artworks': featured_artworks})
 
 # BOOK
 def book_list(request):
@@ -52,6 +44,9 @@ def news_detail(request, pk):
 
 # gallery/ — список
 def all_pictures_view(request):
-    pictures = Picture.objects.all().order_by('-date_made')  # или просто .all() если нет сортировки
+    pictures = Picture.objects.all() # или просто .all() если нет сортировки
     return render(request, 'pages_main_picture/picture_list.html', {'pictures': pictures})
 
+def main_page(request):
+    main_photo = Picture.objects.all()[:3]
+    return render(request,'main_page/main_site.html',{'main_photo':main_photo})

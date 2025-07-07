@@ -10,7 +10,7 @@ from main_app.views.registration_and_log.resend_code_view import resend_code_vie
 urlpatterns = [
     path('', home_view, name='home'),
 
-    path('picture/<int:pk>/', main_page, name='picture_detail'),
+    path('picture/', main_page, name='picture_main_page'),
 
     path('register/', register_view, name='register'),
     path('login/', login_view, name='login'),
