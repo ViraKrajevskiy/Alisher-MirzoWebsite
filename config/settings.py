@@ -140,11 +140,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Если хочешь использовать свои дополнительные директории
-STATICFILES_DIRS = [BASE_DIR / 'main_app' / 'static']
-
-
-
-
+STATICFILES_DIRS = [BASE_DIR / 'static']
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 

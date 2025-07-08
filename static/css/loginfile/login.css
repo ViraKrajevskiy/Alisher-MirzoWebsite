@@ -1,11 +1,11 @@
 :root {
-    --primary-color: #5a3e36;         /* Коричнево-умбровый */
-    --primary-dark: #3b2a26;          /* Темная умбра */
-    --primary-light: #d2b48c;         /* Бежевый */
-    --secondary-color: #a18f7f;       /* Серо-коричневый */
-    --accent-color: #f6e27f;          /* Песочный акцент */
-    --light-color: #fdfaf6;           /* Теплый фон */
-    --dark-color: #2c2c2c;            /* Темный текст */
+    --primary-color: #5a3e36;
+    --primary-dark: #3b2a26;
+    --primary-light: #d2b48c;
+    --secondary-color: #a18f7f;
+    --accent-color: #f6e27f;
+    --light-color: #fdfaf6;
+    --dark-color: #2c2c2c;
     --gray-dark: #6c6c6c;
     --gray-medium: #aaa;
     --gray-light: #eae7e1;
