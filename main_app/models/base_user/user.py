@@ -10,7 +10,6 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
-
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, username, password=None, **extra_fields):
         if not email:

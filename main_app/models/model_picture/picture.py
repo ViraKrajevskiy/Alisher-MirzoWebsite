@@ -8,6 +8,9 @@ class Picture(BaseModel):
     description_photo = models.TextField()
     picture = models.ImageField(upload_to='pictures/images/')
 
+    def __str__(self):
+        return self.title
+
 class CommentPicture(BaseModel):
     picture = models.ForeignKey(Picture, on_delete=models.CASCADE, related_name='imges')
     author = models.ForeignKey(User, on_delete=models.CASCADE)

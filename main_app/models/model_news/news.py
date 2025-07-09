@@ -4,7 +4,7 @@ from main_app.models.base_user.user import BaseModel,User
 class News(BaseModel):
     title = models.CharField(max_length=200)
     main_text = models.TextField()
-    photo = models.ImageField(upload_to='news/photo/')
+    photo = models.ImageField(upload_to='news/photoes/')
     published_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

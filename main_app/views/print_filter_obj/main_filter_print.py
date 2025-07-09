@@ -43,10 +43,22 @@ def news_detail(request, pk):
 
 
 # gallery/ — список
+# список картин в странице только для картин
 def all_pictures_view(request):
     pictures = Picture.objects.all() # или просто .all() если нет сортировки
     return render(request, 'pages_main_picture/picture_list.html', {'pictures': pictures})
 
+
+
+
+# функции основной страницы
+
+# Показ картин в основной странице
 def main_page(request):
-    main_photo = Picture.objects.all()[:3]
-    return render(request,'main_page/main_site.html',{'main_photo':main_photo})
+    pictures = Picture.objects.all()
+    return render(request,'main_page/main_site.html',{'pictures':pictures})
+
+def main_page_albums(request):
+    albums = Album.objects.all()
+    return render(request,'main_page/main_site.html',{'albums':albums})
+
