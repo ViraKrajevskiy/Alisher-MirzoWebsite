@@ -10,7 +10,7 @@ class Album(BaseModel):
     filealbum = models.FileField(upload_to='book/filealbum/', blank=True, null=True)
 
 class ComentAlbum(BaseModel):
-    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='album')
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='albums')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(max_length=700)
 
