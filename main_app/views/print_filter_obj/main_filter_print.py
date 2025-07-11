@@ -37,11 +37,6 @@ def news_detail(request, pk):
     comments = Comment.objects.filter(news=news)
     return render(request, 'pages_main_news/news.html', {'news': news, 'comments': comments})
 
-
-# PICTURE
-# views.py
-
-
 # gallery/ — список
 # список картин в странице только для картин
 def all_pictures_view(request):
@@ -50,15 +45,18 @@ def all_pictures_view(request):
 
 
 
+def news_see(request):
+    news = News.objects.all()
+    comment = Comment.objects.all()
+    return render(request,'pages_main_news/news.html',{'news':news,})
 
 # функции основной страницы
-
 # Показ картин в основной странице
 def main_page(request):
-    pictures = Picture.objects.all()
-    return render(request,'main_page/main_site.html',{'pictures':pictures})
+    pictures = Picture.objects.all()[:15]
+    albums = Album.objects.all()[:5]
+    books = Book.objects.all()[:3]
 
-def main_page_albums(request):
-    albums = Album.objects.all()
-    return render(request,'main_page/main_site.html',{'albums':albums})
+    return render(request,'main_page/main_site.html',{'pictures':pictures, 'albums':albums,'books':books})
+
 
