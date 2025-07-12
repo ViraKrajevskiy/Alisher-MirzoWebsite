@@ -48,7 +48,7 @@ def all_pictures_view(request):
 def news_see(request):
     news = News.objects.all()
     comment = Comment.objects.all()
-    return render(request,'pages_main_news/news.html',{'news':news,})
+    return render(request,'pages_main_news/news.html',{'news':news,'comment':comment})
 
 # функции основной страницы
 # Показ картин в основной странице

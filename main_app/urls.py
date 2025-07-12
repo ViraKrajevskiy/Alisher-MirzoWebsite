@@ -7,9 +7,11 @@ from main_app.views.registration_and_log.confirm_email_view import confirm_email
 from main_app.views.registration_and_log.resend_code_view import resend_code_view
 
 
+from main_app.views_sets.contact_view.contact_view_message import contact_view
+
 urlpatterns = [
     path('', main_page, name='home'),
-
+    path('contact/', contact_view, name='contact'),
     path('register/', register_view, name='register'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),

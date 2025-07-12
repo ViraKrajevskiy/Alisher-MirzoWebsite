@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Художник | Главная</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{% static 'css/main_pagefile/mainpage.css' %}">
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/main_pagefile/mainpage.css' %}">
 </head>
 <body>
     <!-- Навбар -->
@@ -58,8 +60,8 @@
                 </div>
                 {% else %}
                 <div class="d-flex gap-2">
-                    <a href="{% url 'login' %}" class="btn btn-outline-light"><i class="bi bi-box-arrow-in-right me-1"></i>Войти</a>
-                    <a href="{% url 'register' %}" class="btn btn-primary"><i class="bi bi-person-plus me-1"></i>Регистрация</a>
+                    <a href="{% url 'login' %}" class="btn custom-main-button"><i class="bi bi-person-plus me-1"></i>Войти</a>
+                    <a href="{% url 'register' %}" class="btn custom-main-button"><i class="bi bi-person-plus me-1"></i>Регистрация</a>
                 </div>
                 {% endif %}
 
@@ -69,20 +71,25 @@
 
     <!-- Биография -->
     <section class="py-5 warm-background">
-        <div class="scroll-wrapper">  <!-- этот блок добавляем -->
+          <!-- этот блок добавляем -->
             <div class="container">
+               <div class="scroll-wrapper">
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <h2>Биография художника</h2>
-                        <p>Lorem ipsum dolor sit amet...</p>
-                        <p>Duis aute irure dolor...</p>
+                        <p> Алишер Мирзо Узбекский художник, чьи работы хранятся в галереях, музеях и частных коллекциях Германии, Франции, Италии, Испании, Норвегии, Люксембурга, Болгарии, Югославии, России, Японии, Индии, Мадагаскара и США. В своих работах сочетал элементы импрессионизма и абстрактного искусства с традиционными узбекскими видами искусства, такими как миниатюрная живопись и декоративные стили прикладного искусства. Его сюжеты варьируются от пейзажей и натюрмортов до интимных сцен из жизни этнических узбеков. Академик Академии художеств Узбекистана</p>
+                        <p>Родился 21 марта 1948 года в Ташкенте.
+В 1974 году был принят на работу преподавателем на архитектурный факультет Ташкентского государственного политехнического института имени Беруний (ныне Ташкентский государственный технический университет).
+В 1978 году читал лекции в Институте театральных художников имени А.Н. Островского.
+В 1997 году был принят в члены Академии художеств Узбекистана. В том же году был назначен профессором Национальный институт художеств и дизайна имени Камолиддина Бехзода, должность которую занимает и по сей день.
+Участник выставок с 1972 года. Персональные выставки: Москва (1979), Улан-Батор (1987), Дамаск (1988), Бирманская академия и Институт культурной миссии Рамы Кришны в Калькутте (Индия, 1988), Ташкент (1993-2009), Каунас (2009), галерея Анны Царев в Нью-Йорке (США, 2010)и другие..</p>
                     </div>
                     <div class="col-md-6">
                         <img src="{% static 'images/alisher-mirzo.jpg' %}" alt="Фото художника" class="img-fluid rounded artist-photo">
                     </div>
                 </div>
+               </div>
             </div>
-        </div>
     </section>
     
 
@@ -147,60 +154,76 @@
 
     <!-- Видео и интервью -->
     <section class="py-5 warm-background">
-
         <div class="container">
-            <h2 class="mb-4">Видео и интервью</h2>
+            <h2 class="mb-4">Видео и интервью с Алишером Мирзо</h2>
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/ff5x62Umy8M" allowfullscreen></iframe>
                     </div>
-                    <h5 class="mt-2">Интервью 2023</h5>
+                    <h5 class="mt-2">Mahorat darsi | Rassom va yozuvchi Alisher Mirzo</h5>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/tEraGIfdnKI" allowfullscreen></iframe>
                     </div>
-                    <h5 class="mt-2">Процесс создания</h5>
+                    <h5 class="mt-2">Rassom,yozuvchi, akademik Alisher Mirzaev bilan suhbat.</h5>
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/11oySWvrlwc" allowfullscreen></iframe>
                     </div>
-                    <h5 class="mt-2">Выставка 2022</h5>
+                    <h5 class="mt-2">Rassom,yozuvchi, akademik Alisher Mirzaev bilan suhbat.</h5>
                 </div>
             </div>
         </div>
     </section>
 
+
     <!-- Контакты и форма -->
     <section class="py-5 warm-background">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h2 class="mb-4">Свяжитесь с нами</h2>
-                    <div class="contact-form">
-                        <form>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Ваш Email</label>
-                                <input type="email" class="form-control" id="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Сообщение</label>
-                                <textarea class="form-control" id="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Отправить</button>
-                        </form>
+                {% if request.user.is_authenticated %}
+                <!-- Показываем форму -->
+                <form method="post" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <!-- Email пользователя (readonly) -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Ваш Email</label>
+                        <input type="email" class="form-control" id="email" value="{{ request.user.email }}" readonly>
                     </div>
-                </div>
+                    <!-- Тема -->
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Тема</label>
+                        <input type="text" class="form-control" id="subject" name="subject" required>
+                    </div>
+                    <!-- Сообщение -->
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Сообщение</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+                {% else %}
+                <!-- Показываем сообщение -->
+                <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a> в аккаунт, чтобы отправить сообщение.</p>
+                {% endif %}
+                
+
+                <!-- Контакты -->
                 <div class="col-md-6">
                     <h2 class="mb-4">Контакты</h2>
                     <p><i class="fas fa-envelope me-2"></i> artist@example.com</p>
                     <p><i class="fas fa-phone me-2"></i> +1 (234) 567-89-00</p>
                     <div class="mt-4">
                         <h5>Социальные сети:</h5>
-                        <a href="https://www.instagram.com/alishermirzo_artist?igsh=MXE3d2ozbzY1MDB6eg==" class="btn btn-outline-dark me-2"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/share/16hyYqLerk/?mibextid=wwXIfr" class="btn btn-outline-dark me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/alishermirzo_artist?igsh=MXE3d2ozbzY1MDB6eg==" class="btn btn-outline-dark me-2">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/16hyYqLerk/?mibextid=wwXIfr" class="btn btn-outline-dark me-2">
+                            <i class="fab fa-facebook"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -208,7 +231,7 @@
     </section>
 
     <!-- Футер -->
-    <footer class="bg-dark text-white py-5">
+    <footer class="py-5 custom-footer">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4">
@@ -240,15 +263,15 @@
                         <li class="mb-2"><i class="bi bi-telephone me-2"></i>+998 90 123 45 67</li>
                     </ul>
                 </div>
-                <div class="col-lg-3">
-                    <h5 class="mb-4">Подписаться на новости</h5>
+                <div class="newsletter-box">
                     <form>
                         <div class="mb-3">
                             <input type="email" class="form-control" placeholder="Ваш email" required>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Подписаться</button>
+                        <button type="submit" class="btn custom-main-button w-100">Подписаться</button>
                     </form>
                 </div>
+
             </div>
             <hr class="my-4">
             <div class="row">
@@ -266,6 +289,5 @@
     </footer>
 
     <!-- Bootstrap JS и зависимости -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    </body>
 </html>

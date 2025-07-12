@@ -2,9 +2,18 @@
     background-color: #f5ddc1;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(90, 62, 54, 0.2);
-    padding: 15px 0;
+    padding: 25px;
+    width: 100%;
 }
 
+.scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: #f39c12 #5a3e36;
+    background-color: transparent; /* тут тоже фон убираем, т.к. warm-background уже есть */
+    padding: 0;
+}
 
 .custom-pictures-button {
     border: 2px solid #5a3e36 !important;
@@ -36,7 +45,7 @@
 
 /* Стили выпадающего меню */
 .dropdown-menu {
-    background-color: #3b2a26;
+    background-color: #a18f7f;
     border: 1px solid #a18f7f;
     border-radius: 6px;
 }
@@ -49,7 +58,7 @@
 
 .dropdown-menu .dropdown-item:hover {
     background-color: #3b2a26;
-    color: #000;
+    color: #a18f7f;
 }
 
 
@@ -160,12 +169,15 @@
     padding: 8px 15px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-
+    color: #f6e27f; /* тот же цвет, что и в футере */
 }
+
 
 .nav-link:hover {
     background-color: #5a3e36;
+    color: #fff7c0; /* как в футере при ховере */
 }
+
 
 /* Стили для футера */
 footer {
@@ -209,3 +221,62 @@ footer a:hover {
     }
 }
 
+.custom-footer {
+    background-color: #3b2a26;
+    color: #f6e27f;
+}
+
+.custom-footer a {
+    color:  black !important;
+    text-decoration: none;
+}
+
+.custom-footer a:hover {
+    color: #fff7c0 !important; /* мягкий эффект наведения */
+}
+
+.custom-footer a,
+.custom-footer p,
+.custom-footer h5,
+.custom-footer li {
+    color: #f6e27f !important;
+}
+
+.custom-main-button {
+    background-color: #a18f7f !important; /* ← новый цвет */
+    border: none;
+    color: #3b2a26 !important;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-main-button:hover {
+    background-color: #3b2a26 !important;
+    color: #d9c39e !important;
+}
+
+
+.newsletter-box {
+    background-color: #5a3e36; /* светлее, чем фон футера */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.newsletter-box input[type="email"] {
+    background-color: #fae8d4;
+    border: 1px solid #a18f7f;
+    color: #855044;
+}
+.newsletter-box input[type="email"]::placeholder {
+    color: #7a6455;
+}
+.navbar .nav-link,
+.navbar .navbar-brand {
+    color: #f6e27f !important;
+}
+
+.navbar .nav-link:hover {
+    color: #fff7c0 !important;
+    background-color: #5a3e36;
+}
