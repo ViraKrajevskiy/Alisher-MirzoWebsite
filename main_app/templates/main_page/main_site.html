@@ -30,7 +30,7 @@
                         <a class="nav-link active" href="#">Биография</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Галерея</a>
+                        <a class="nav-link" href="{% url 'all_pictures' %}">Галерея</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Альбомы</a>
@@ -97,8 +97,9 @@
     <section class="py-5 warm-background">
 
         <div class="container">
+           <div class="scroll-wrapper">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Картины</h2>
+                <h2>Творчество художника</h2>
                 <a href="{% url 'all_pictures' %}" class="btn custom-pictures-button">Все картины</a>
             </div>
             <div class="scroll-container">
@@ -110,14 +111,17 @@
                 </div>
                 {% endfor %}
             </div>
+           </div>
         </div>
+
     </section>
 
     <!-- Альбомы -->
     <section class="py-5 warm-background">
         <div class="container">
+         <div class="scroll-wrapper">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Альбомы</h2>
+                <h2>Альбомы и каталоги</h2>
                 <a href="#" class="btn custom-pictures-button">Все альбомы</a>
             </div>
             <div class="scroll-container">
@@ -130,13 +134,15 @@
                     {% endfor %}
                 </div>
             </div>
+          </div>
     </section>
 
     <!-- Книги -->
     <section class="py-5 warm-background">
         <div class="container">
+           <div class="scroll-wrapper">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Книги</h2>
+                <h2>Литература</h2>
                 <a href="#" class="btn custom-pictures-button">Все книги</a>
             </div>
             <div class="scroll-container">
@@ -148,6 +154,7 @@
                 </div>
                 {% endfor %}
             </div>
+           </div>
         </div>
     </section>
 
@@ -203,7 +210,7 @@
                         <label for="message" class="form-label">Сообщение</label>
                         <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Отправить</button>
+                    <button type="submit" class="btn custom-pictures-button">Отправить</button>
                 </form>
                 {% else %}
                 <!-- Показываем сообщение -->
@@ -288,6 +295,6 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS и зависимости -->
+
     </body>
 </html>
