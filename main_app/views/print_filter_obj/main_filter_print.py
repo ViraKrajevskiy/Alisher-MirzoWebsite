@@ -37,7 +37,9 @@ def news_detail(request, pk):
     comments = Comment.objects.filter(news=news)
     return render(request, 'pages_main_news/news.html', {'news': news, 'comments': comments})
 
+
 # gallery/ — список
+# просмотр галереии
 # список картин в странице только для картин
 def all_pictures_view(request):
     pictures = Picture.objects.all() # или просто .all() если нет сортировки
@@ -45,10 +47,8 @@ def all_pictures_view(request):
 
 
 
-def news_see(request):
-    news = News.objects.all()
-    comment = Comment.objects.all()
-    return render(request,'pages_main_news/news.html',{'news':news,'comment':comment})
+
+
 
 # функции основной страницы
 # Показ картин в основной странице

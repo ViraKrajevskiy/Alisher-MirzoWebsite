@@ -4,3 +4,4 @@ from .model_news.news import News, Comment
 from .model_picture.picture import Picture, CommentPicture
 from .model_albums.albums import Album, ComentAlbum
 from .email_forms.email_send import ContactMessage
+from .model_subscribe_news.news_subscribe import NewsSubscriber
