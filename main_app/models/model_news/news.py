@@ -1,6 +1,15 @@
 from django.db import models
 from main_app.models.base_user.user import BaseModel,User
 
+
+class NewsType(BaseModel):
+    type_news = [
+        ('general','General'),
+        ('pictures','Pictures'),
+        ('albums','Albums'),
+        ('books','Books')
+    ]
+
 class News(BaseModel):
     title = models.CharField(max_length=200)
     main_text = models.TextField()

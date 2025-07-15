@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="{% static 'css/main_pagefile/mainpage.css' %}">
 </head>
 <body>
-    
     <!-- Навбар -->
+
     <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
         <div class="container">
             <a class="navbar-brand" href="#">𝓐𝓵𝓲𝓼𝓱𝓮𝓻 𝓜𝓲𝓻𝔃𝓸</a>
@@ -27,10 +27,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Главная</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="#">Биография</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'all_pictures' %}">Галерея</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'album_list' %}">Альбомы</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'book_list' %}">Книги</a>
@@ -155,6 +161,85 @@
         </div>
     </section>
 
+
+    <!-- Видео и интервью -->
+    <section class="py-5 warm-background">
+        <div class="container">
+            <h2 class="mb-4">Видео и интервью с Алишером Мирзо</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/ff5x62Umy8M" allowfullscreen></iframe>
+                    </div>
+                    <h5 class="mt-2">Mahorat darsi | Rassom va yozuvchi Alisher Mirzo</h5>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/tEraGIfdnKI" allowfullscreen></iframe>
+                    </div>
+                    <h5 class="mt-2">Rassom,yozuvchi, akademik Alisher Mirzaev bilan suhbat.</h5>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/11oySWvrlwc" allowfullscreen></iframe>
+                    </div>
+                    <h5 class="mt-2">Rassom,yozuvchi, akademik Alisher Mirzaev bilan suhbat.</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Контакты и форма -->
+    <section class="py-5 warm-background">
+        <div class="container">
+            <div class="row">
+                {% if request.user.is_authenticated %}
+                <!-- Показываем форму -->
+                <form method="post" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <!-- Email пользователя (readonly) -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Ваш Email</label>
+                        <input type="email" class="form-control" id="email" value="{{ request.user.email }}" readonly>
+                    </div>
+                    <!-- Тема -->
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Тема</label>
+                        <input type="text" class="form-control" id="subject" name="subject" required>
+                    </div>
+                    <!-- Сообщение -->
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Сообщение</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn custom-pictures-button">Отправить</button>
+                </form>
+                {% else %}
+                <!-- Показываем сообщение -->
+                <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a> в аккаунт, чтобы отправить сообщение.</p>
+                {% endif %}
+
+
+                <!-- Контакты -->
+                <div class="col-md-6">
+                    <h2 class="mb-4">Контакты</h2>
+                    <p><i class="fas fa-envelope me-2"></i> artist@example.com</p>
+                    <p><i class="fas fa-phone me-2"></i> +1 (234) 567-89-00</p>
+                    <div class="mt-4">
+                        <h5>Социальные сети:</h5>
+                        <a href="https://www.instagram.com/alishermirzo_artist?igsh=MXE3d2ozbzY1MDB6eg==" class="btn btn-outline-dark me-2">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/16hyYqLerk/?mibextid=wwXIfr" class="btn btn-outline-dark me-2">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Футер -->
     <footer class="py-5 custom-footer">
         <div class="container">
@@ -165,6 +250,8 @@
                     <div class="social-links mt-3">
                         <a href="https://www.instagram.com/alishermirzo_artist?igsh=MXE3d2ozbzY1MDB6eg==" class="text-white me-3"><i class="bi bi-instagram"></i></a>
                         <a href="https://www.facebook.com/share/16hyYqLerk/?mibextid=wwXIfr" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+
+
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
@@ -177,6 +264,25 @@
                         <li class="mb-2"><a href="#books" class="text-white text-decoration-none">Книги</a></li>
                         <li class="mb-2"><a href="#contact" class="text-white text-decoration-none">Контакты</a></li>
                     </ul>
+                </div>
+
+                <div class="newsletter-box">
+                    <form method="post" action="{% url 'subscribe_to_news' %}">
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            {% if request.user.is_authenticated %}
+                                <input type="email" name="email" class="form-control" value="{{ request.user.email }}" readonly>
+                            {% else %}
+                                <input type="email" name="email" class="form-control" placeholder="Ваш email" required>
+                            {% endif %}
+                        </div>
+
+                        <!-- honeypot поле для защиты от ботов -->
+                        <input type="text" name="website" style="display:none">
+
+                        <button type="submit" class="btn custom-main-button w-100">Подписаться</button>
+                    </form>
                 </div>
             </div>
             <hr class="my-4">
@@ -194,7 +300,5 @@
         </div>
 
     </footer>
-
-
     </body>
 </html>
