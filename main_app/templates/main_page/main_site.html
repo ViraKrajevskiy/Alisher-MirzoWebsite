@@ -218,12 +218,10 @@
                 <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a> в аккаунт, чтобы отправить сообщение.</p>
                 {% endif %}
                 
-
                 <!-- Контакты -->
                 <div class="col-md-6">
                     <h2 class="mb-4">Контакты</h2>
-                    <p><i class="fas fa-envelope me-2"></i> artist@example.com</p>
-                    <p><i class="fas fa-phone me-2"></i> +1 (234) 567-89-00</p>
+                    <p><i class="fas fa-envelope me-2"></i> alishermirzowork@gmail.com</p>
                     <div class="mt-4">
                         <h5>Социальные сети:</h5>
                         <a href="https://www.instagram.com/alishermirzo_artist?igsh=MXE3d2ozbzY1MDB6eg==" class="btn btn-outline-dark me-2">
@@ -256,19 +254,18 @@
                     <h5 class="mb-4">Навигация</h5>
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="#" class="text-white text-decoration-none">Главная</a></li>
-                        <li class="mb-2"><a href="#biography" class="text-white text-decoration-none">Биография</a></li>
-                        <li class="mb-2"><a href="#artworks" class="text-white text-decoration-none">Картины</a></li>
-                        <li class="mb-2"><a href="#albums" class="text-white text-decoration-none">Альбомы</a></li>
-                        <li class="mb-2"><a href="#books" class="text-white text-decoration-none">Книги</a></li>
-                        <li class="mb-2"><a href="#contact" class="text-white text-decoration-none">Контакты</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Биография</a></li>
+                        <li class="mb-2"><a href="{% url 'all_pictures' %}" class="text-white text-decoration-none">Картины</a></li>
+                        <li class="mb-2"><a href="{% url 'album_list' %}" class="text-white text-decoration-none">Альбомы</a></li>
+                        <li class="mb-2"><a href="{% url 'book_list' %}" class="text-white text-decoration-none">Литература</a></li>
+                        <li class="mb-2"><a href="{}" class="text-white text-decoration-none">Контакты</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="mb-4">Контакты</h5>
                     <ul class="list-unstyled">
                         <li class="mb-2"><i class="bi bi-geo-alt me-2"></i>Ташкент, Узбекистан</li>
-                        <li class="mb-2"><i class="bi bi-envelope me-2"></i>info@alishermirzo.art</li>
-                        <li class="mb-2"><i class="bi bi-telephone me-2"></i>+998 90 123 45 67</li>
+                        <li class="mb-2"><i class="bi bi-envelope me-2"></i>alishermirzowork@gmail.com</li>
                     </ul>
                 </div>
                 <div class="newsletter-box">
