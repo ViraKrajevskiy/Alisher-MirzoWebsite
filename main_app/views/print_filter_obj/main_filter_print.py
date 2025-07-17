@@ -1,20 +1,25 @@
-from django.shortcuts import render, get_object_or_404
 from main_app.models.model_albums.albums import Album, ComentAlbum
 from main_app.models.model_book.book import Book, ComentBook
 from main_app.models.model_news.news import News, Comment
 from main_app.models.model_picture.picture import Picture, CommentPicture
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, get_object_or_404
 
 # BOOK
 def book_list(request):
     books = Book.objects.all()
-    return render(request, 'main_pages_books/book..html', {'books': books})
+    return render(request, 'pages_main_books/book.html', {'books': books})
 
-def book_detail(request, pk):
-    book = get_object_or_404(Book, pk=pk)
-    comments = ComentBook.objects.filter(books=book)
-    return render(request, 'main_pages_books/book.html', {'book': book, 'comments': comments})
+# views.py
 
+@login_required
+def add_comment(request, book_id):
+    if request.method == 'POST':
+        text = request.POST.get('text')
+        book = get_object_or_404(Book, id=book_id)
+        ComentBook.objects.create(book=book, author=request.user, text=text)
+    return redirect('book_list')
 
 # ALBUM     # функции отсека альбомы
 def album_list(request):
@@ -42,6 +47,10 @@ def news_detail(request, pk):
     news = get_object_or_404(News, pk=pk)
     comments = Comment.objects.filter(news=news)
     return render(request, 'pages_main_news/news.html', {'news': news, 'comments': comments})
+
+
+
+
 
 
 # gallery/ — список

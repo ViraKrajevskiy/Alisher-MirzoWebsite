@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Книги</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main_books/books.css' %}">
+</head>
+<body>
+
+<div class="container py-5">
+    <h1 class="mb-4">Коллекция книг</h1>
+
+    {% for book in books %}
+    <div class="book-card card mb-3" data-book-id="{{ book.id }}">
+        <div class="row g-0">
+            <div class="col-md-4">
+                {% if book.photo %}
+                    <img src="{{ book.photo.url }}" class="img-fluid rounded-start" alt="Обложка книги">
+                {% else %}
+                    <img src="{% static 'img/default_book.jpg' %}" class="img-fluid rounded-start" alt="Обложка по умолчанию">
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text"><small class="text-body-secondary">Автор: {{ book.AuthorName }}</small></p>
+                    <form method="post" action="{% url 'like_book' book.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                            ❤️ {{ book.likes.count }}
+                        </button>
+                    </form>
+                    <button class="btn btn-sm btn-outline-primary toggle-expand mt-2">Подробнее</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="expanded-content">
+            <p class="card-text">{{ book.description }}</p>
+            <p class="card-text"><small class="text-body-secondary">Дата публикации: {{ book.date_made }}</small></p>
+
+            <div class="comments-section mt-4">
+                <h5>Комментарии</h5>
+
+                {% for comment in book.comments.all %}
+                <div class="comment">
+                    <h6>{{ comment.author.username }}</h6>
+
+                    {% if comment.author == request.user and comment.id|stringformat:"s" == edit_comment_id %}
+                        <!-- Режим редактирования -->
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="edit_comment_id" value="{{ comment.id }}">
+                            <textarea name="edit_text" class="form-control mb-2" rows="3" required>{{ comment.text }}</textarea>
+                            <button type="submit" class="btn btn-sm btn-success">Сохранить</button>
+                            <a href="." class="btn btn-sm btn-secondary">Отмена</a>
+                        </form>
+                    {% else %}
+                        <p>{{ comment.text }}</p>
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button"
+                                    class="btn btn-sm btn-outline-secondary comment-like"
+                                    data-comment-id="{{ comment.id }}">
+                                ❤️ <span class="likes-count">{{ comment.likes.count }}</span>
+                            </button>
+
+                            {% if comment.author == request.user %}
+                            <!-- Кнопка редактирования -->
+                            <form method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="edit_comment_id" value="{{ comment.id }}">
+                                <button type="submit" class="btn btn-sm btn-outline-warning">Редактировать</button>
+                            </form>
+
+                            <!-- Кнопка удаления -->
+                            <form method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="delete_comment_id" value="{{ comment.id }}">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Удалить</button>
+                            </form>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+                {% empty %}
+                <p>Комментариев пока нет.</p>
+                {% endfor %}
+
+                <form method="post" action="{% url 'add_comment' book.id %}" class="mt-3">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <textarea class="form-control" name="text" placeholder="Оставьте ваш комментарий" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Кнопка «Подробнее»
+    document.querySelectorAll('.toggle-expand').forEach(button => {
+        button.addEventListener('click', function () {
+            const card = this.closest('.book-card');
+            const expandedContent = card.querySelector('.expanded-content');
+
+            if (expandedContent.style.display === 'block') {
+                expandedContent.style.display = 'none';
+                this.textContent = 'Подробнее';
+            } else {
+                expandedContent.style.display = 'block';
+                this.textContent = 'Скрыть';
+            }
+        });
+    });
+
+    // Лайки на комментарии (без перезагрузки)
+    document.querySelectorAll('.comment-like').forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            const commentId = this.dataset.commentId;
+            const likesSpan = this.querySelector('.likes-count');
+
+            fetch(`/comments/${commentId}/like/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            })
+            .then(response => response.json())
+            .then(data => {
+                likesSpan.textContent = data.likes_count;
+                this.classList.toggle('active', data.liked);
+            });
+        });
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
+</script>
+
+</body>
+</html>

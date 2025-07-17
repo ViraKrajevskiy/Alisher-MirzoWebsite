@@ -94,32 +94,32 @@
                </div>
             </div>
     </section>
-
-    {% for chunk in album %}
-    <section class="py-5 warm-background">
-        <div class="container">
-            <div class="scroll-wrapper">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    {% if forloop.first %}
-                        <h2>Творчество художника</h2>
-                        <a href="{% url 'all_pictures' %}" class="btn custom-pictures-button">Все картины</a>
-                    {% else %}
-                        <h2>Ещё картины</h2>
-                    {% endif %}
-                </div>
-                <div class="scroll-container">
-                    {% for photo in chunk %}
-                    <div class="scroll-item">
-                        <a href="{{ photo.picture.url }}" target="_blank">
-                            <img src="{{ photo.picture.url }}" class="card-img-top" alt="{{ photo.title }}">
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </section>
-    {% endfor %}
+    
+    <!--{% for chunk in album %}-->
+    <!--<section class="py-5 warm-background">-->
+    <!--    <div class="container">-->
+    <!--        <div class="scroll-wrapper">-->
+    <!--            <div class="d-flex justify-content-between align-items-center mb-4">-->
+    <!--                {% if forloop.first %}-->
+    <!--                    <h2>Творчество художника</h2>-->
+    <!--                    <a href="{% url 'all_pictures' %}" class="btn custom-pictures-button">Все картины</a>-->
+    <!--                {% else %}-->
+    <!--                    <h2>Ещё картины</h2>-->
+    <!--                {% endif %}-->
+    <!--            </div>-->
+    <!--            <div class="scroll-container">-->
+    <!--                {% for photo in chunk %}-->
+    <!--                <div class="scroll-item">-->
+    <!--                    <a href="{{ photo.picture.url }}" target="_blank">-->
+    <!--                        <img src="{{ photo.picture.url }}" class="card-img-top" alt="{{ photo.title }}">-->
+    <!--                    </a>-->
+    <!--                </div>-->
+    <!--                {% endfor %}-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</section>-->
+    <!--{% endfor %}-->
 
 
     <!-- Видео и интервью -->
