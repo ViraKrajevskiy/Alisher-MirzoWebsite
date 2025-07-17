@@ -16,10 +16,16 @@ def book_detail(request, pk):
     return render(request, 'main_pages_books/book.html', {'book': book, 'comments': comments})
 
 
-# ALBUM
+# ALBUM     # функции отсека альбомы
 def album_list(request):
     albums = Album.objects.all()
-    return render(request, 'pages_main_albums/albums.html', {'albums': albums})
+    def chunked(queryset, size):
+        for i in range(0, len(queryset), size):
+            yield queryset[i:i+size]
+
+    album = list(chunked(list(albums), 90))
+
+    return render(request, 'pages_main_albums/albums.html', {'album': album})
 
 def album_detail(request, pk):
     album = get_object_or_404(Album, pk=pk)
@@ -42,8 +48,17 @@ def news_detail(request, pk):
 # просмотр галереии
 # список картин в странице только для картин
 def all_pictures_view(request):
-    pictures = Picture.objects.all() # или просто .all() если нет сортировки
-    return render(request, 'pages_main_picture/picture_list.html', {'pictures': pictures})
+    pictures = Picture.objects.all()# или просто .all() если нет сортировки
+
+    def chunked(queryset, size):
+        for i in range(0, len(queryset), size):
+            yield queryset[i:i+size]
+
+    pictures_chunks = list(chunked(list(pictures), 90))
+
+    return render(request, 'pages_main_picture/picture_list.html', {'pictures_chunks': pictures_chunks})
+
+
 
 
 

@@ -95,71 +95,31 @@
             </div>
     </section>
 
-
-    <!-- Картины -->
+    {% for chunk in album %}
     <section class="py-5 warm-background">
-
         <div class="container">
-           <div class="scroll-wrapper">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Творчество художника</h2>
-                <a href="{% url 'all_pictures' %}" class="btn custom-pictures-button">Все картины</a>
-            </div>
-            <div class="scroll-container">
-                {% for photo in pictures %}
-                <div class="scroll-item">
-                    <a href="{{ photo.picture.url }}" target="_blank">
-                        <img src="{{ photo.picture.url }}" class="card-img-top" alt="{{ photo.title }}">
-                    </a>
+            <div class="scroll-wrapper">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    {% if forloop.first %}
+                        <h2>Творчество художника</h2>
+                        <a href="{% url 'all_pictures' %}" class="btn custom-pictures-button">Все картины</a>
+                    {% else %}
+                        <h2>Ещё картины</h2>
+                    {% endif %}
                 </div>
-                {% endfor %}
-            </div>
-           </div>
-        </div>
-
-    </section>
-
-    <!-- Альбомы -->
-    <section class="py-5 warm-background">
-        <div class="container">
-         <div class="scroll-wrapper">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Альбомы и каталоги</h2>
-                <a href="{% url 'album_list' %}" class="btn custom-pictures-button">Все альбомы</a>
-            </div>
-            <div class="scroll-container">
-                    {% for photo in albums %}
+                <div class="scroll-container">
+                    {% for photo in chunk %}
                     <div class="scroll-item">
-                        <a href="{{ photo.photoalbum.url }}" target="_blank">
-                            <img src="{{ photo.photoalbum.url }}" class="card-img-top" alt="{{ photo.title }}">
+                        <a href="{{ photo.picture.url }}" target="_blank">
+                            <img src="{{ photo.picture.url }}" class="card-img-top" alt="{{ photo.title }}">
                         </a>
                     </div>
                     {% endfor %}
                 </div>
             </div>
-          </div>
-    </section>
-
-    <!-- Книги -->
-    <section class="py-5 warm-background">
-        <div class="container">
-           <div class="scroll-wrapper">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2>Литература</h2>
-                <a href="{% url 'book_list' %}" class="btn custom-pictures-button">Все книги</a>
-            </div>
-            <div class="scroll-container">
-                {% for photo in books %}
-                <div class="scroll-item">
-                    <a href="{{ photo.photo.url }}" target="_blank">
-                        <img src="{{ photo.photo.url }}" class="card-img-top" alt="{{ photo.title }}">
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
-           </div>
         </div>
     </section>
+    {% endfor %}
 
 
     <!-- Видео и интервью -->
