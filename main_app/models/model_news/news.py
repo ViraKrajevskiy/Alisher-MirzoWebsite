@@ -17,12 +17,14 @@ class News(BaseModel):
     main_text = models.TextField()
     photo = models.ImageField(upload_to='news/photoes/')
     published_at = models.DateTimeField(auto_now_add=True)
-
     type = models.ForeignKey(NewsType, on_delete=models.SET_NULL, null=True, related_name='news')
-
 
     def __str__(self):
         return self.title
+
+    def like_count(self):
+        return self.likes.count()
+        
 
 
 class Comment(BaseModel):
@@ -46,4 +48,16 @@ class CommentLike(models.Model):
 
     def __str__(self):
         return f"{self.user} liked comment {self.comment.id}"
+
+
+
+class NewsLike(models.Model):
+    news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('news', 'user')  # Один пользователь — один лайк на одну новость
+
+    def __str__(self):
+        return f"{self.user.username} liked news '{self.news.title}'"
         

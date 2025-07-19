@@ -11,6 +11,9 @@ class Picture(BaseModel):
     def __str__(self):
         return self.title
 
+    def like_count(self):
+        return self.likes.count()
+
 class CommentPicture(BaseModel):
     picture = models.ForeignKey(Picture, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -34,3 +37,13 @@ class CommentPictureLike(models.Model):
 
     def __str__(self):
         return f"{self.user} liked comment {self.comment.id}"
+
+class PictureLike(models.Model):
+    picture = models.ForeignKey(Picture, on_delete=models.CASCADE, related_name='likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('picture', 'user')  # Один пользователь — один лайк
+
+    def __str__(self):
+        return f"{self.user.username} liked picture {self.picture.title}"

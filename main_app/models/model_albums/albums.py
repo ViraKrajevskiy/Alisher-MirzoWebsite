@@ -18,7 +18,7 @@ class Album(BaseModel):
         return self.likes.count()
 
 class ComentAlbum(BaseModel):
-    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='album')
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(max_length=700)
 
@@ -37,3 +37,12 @@ class AlbumLike(models.Model):
     def __str__(self):
         return f"{self.user} liked {self.album.title}"
 
+class CommentAlbumLike(models.Model):
+    comment = models.ForeignKey(ComentAlbum, on_delete=models.CASCADE, related_name='likes')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('comment', 'user')  # один пользователь может лайкнуть только один раз
+
+    def __str__(self):
+        return f"{self.user.username} liked comment {self.comment.id}"
