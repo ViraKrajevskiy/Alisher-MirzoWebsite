@@ -6,21 +6,6 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, get_object_or_404
 
-# BOOK
-def book_list(request):
-    books = Book.objects.all()
-    return render(request, 'pages_main_books/book.html', {'books': books})
-
-# views.py
-
-@login_required
-def add_comment(request, book_id):
-    if request.method == 'POST':
-        text = request.POST.get('text')
-        book = get_object_or_404(Book, id=book_id)
-        ComentBook.objects.create(book=book, author=request.user, text=text)
-    return redirect('book_list')
-
 # ALBUM     # функции отсека альбомы
 def album_list(request):
     albums = Album.objects.all()
