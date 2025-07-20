@@ -13,7 +13,7 @@ def add_comment_album(request, album_id):
     if text:
         ComentAlbum.objects.create(album=album, author=request.user, text=text)
     return redirect(f"/albums/#album-{album_id}")
-
+    
 
 @login_required
 def delete_comment_album(request, comment_id):
@@ -30,12 +30,14 @@ def update_comment_album(request, comment_id):
     comment = get_object_or_404(ComentAlbum, id=comment_id)
     if comment.author != request.user:
         return redirect('/')
+
     if request.method == 'POST':
         new_text = request.POST.get('text')
         if new_text:
             comment.text = new_text
             comment.save()
         return redirect(f"/albums/#album-{comment.album.id}")
+
     return render(request, 'pages_main_albums/albums.html', {'comment': comment})
 
 
@@ -57,6 +59,7 @@ def like_album(request, album_id):
         'likes_count': AlbumLike.objects.filter(album=album).count(),
         'liked': liked
     })
+
 
 
 @login_required
