@@ -76,13 +76,8 @@ def like_comment(request, comment_id):
         'likes_count': likes_count
     })
 
-
-
-
 # Отображение списка книг с возможностью редактирования/удаления комментария
 def book_list(request):
-    print("POST DATA:", request.POST)  # <-- вот сюда
-
     books = Book.objects.all()
 
     edit_comment_id = request.POST.get('edit_comment_id')

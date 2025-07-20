@@ -1,8 +1,6 @@
 from main_app.models.base_user.user import BaseModel,User
 from django.db import models
 
-
-
 class Album(BaseModel):
     title = models.CharField(max_length=70)
     AuthorName = models.CharField(max_length=60)
@@ -12,7 +10,7 @@ class Album(BaseModel):
     filealbum = models.FileField(upload_to='book/filealbum/', blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return f"{self.title} — {self.AuthorName}"
 
     def like_count(self):
         return self.likes.count()
@@ -35,7 +33,7 @@ class AlbumLike(models.Model):
         unique_together = ('album', 'user')  # один лайк от одного пользователя
 
     def __str__(self):
-        return f"{self.user} liked {self.album.title}"
+        return f"{self.user.username} liked album {self.album.title}"
 
 class CommentAlbumLike(models.Model):
     comment = models.ForeignKey(ComentAlbum, on_delete=models.CASCADE, related_name='likes')

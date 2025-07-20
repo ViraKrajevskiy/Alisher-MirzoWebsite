@@ -25,29 +25,27 @@ class News(BaseModel):
     def like_count(self):
         return self.likes.count()
         
-
-
 class Comment(BaseModel):
     news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(max_length=700)
-    published_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.author.username or self.author.phone_number} — {self.text[:30]}"
+        return f"{self.author.username} — {self.text[:30]}"
+
 
     def like_count(self):
         return self.likes.count()
 
-class CommentLike(models.Model):
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='likes')
+class CommentLikes(models.Model):
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='likeses')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ('comment', 'user')  # Один пользователь — один лайк на комментарий
 
     def __str__(self):
-        return f"{self.user} liked comment {self.comment.id}"
+        return f"{self.user.username} liked comment {self.comment.id}"
 
 
 

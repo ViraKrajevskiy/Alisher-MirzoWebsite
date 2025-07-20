@@ -1,13 +1,15 @@
 from django.urls import path
 
 from main_app.views.print_filter_obj.main_filter_print import (
-    news_detail, news_list, album_detail, album_list, main_page, all_pictures_view
+    news_detail, news_list, main_page, all_pictures_view
 )
 from main_app.views.registration_and_log.log_registration import (
     login_view, register_view, logout_view
 )
 from main_app.views.registration_and_log.confirm_email_view import confirm_email_view
 from main_app.views.registration_and_log.resend_code_view import resend_code_view
+from main_app.views_sets.Albums.albums import add_comment_album,  like_album,  \
+     album_list, like_comment_album, update_comment_album, delete_comment_album
 from main_app.views_sets.Books.books import (
     like_comment, like_book, delete_comment, update_comment, book_list, add_comment
 )
@@ -33,12 +35,17 @@ urlpatterns = [
     path('books/<int:book_id>/like/', like_book, name='like_book'),
     path('books/<int:book_id>/add-comment/', add_comment, name='add_comment'),
     path('comments/<int:comment_id>/like/', like_comment, name='like_comment'),
-    path('comments/<int:comment_id>/delete/', delete_comment, name='delete_comment'),  # 🆕
-    path('comments/<int:comment_id>/update/', update_comment, name='update_comment'),  # 🆕
+    path('comments/<int:comment_id>/delete/', delete_comment, name='delete_comment'),
+    path('comments/<int:comment_id>/update/', update_comment, name='update_comment'),
 
     # Альбомы
     path('albums/', album_list, name='album_list'),
-    path('albums/<int:pk>/', album_detail, name='album_detail'),
+    path('albums/<int:album_id>/add-comment/', add_comment_album, name='add_comment_album'),
+    path('albums/comment/<int:comment_id>/delete/', delete_comment_album, name='delete_comment_album'),
+    path('albums/comment/<int:comment_id>/update/', update_comment_album, name='update_comment_album'),
+    path('albums/<int:album_id>/like/', like_album, name='like_album'),
+    path('albums/comment/<int:comment_id>/like/', like_comment_album, name='like_comment_album'),
+
 
     # Новости
     path('news/', news_list, name='news_list'),

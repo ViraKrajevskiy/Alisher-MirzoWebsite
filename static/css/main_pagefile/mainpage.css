@@ -145,7 +145,7 @@
     padding: 10px 20px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-    color: #fff;
+    color: rgba(250,232,212,255);
 }
 
 .contact-form .btn-primary:hover {
