@@ -1,21 +1,24 @@
 from django.db import models
-from main_app.models.base_user.user import BaseModel,User
+from main_app.models.base_user.user import BaseModel, User
+
+class NewsTypeChoices(models.TextChoices):
+    GENERAL = 'general', 'General'
+    PICTURES = 'pictures', 'Pictures'
+    ALBUMS = 'albums', 'Albums'
+    BOOKS = 'books', 'Books'
 
 
 class NewsType(BaseModel):
-    type_news = [
-        ('general','General'),
-        ('pictures','Pictures'),
-        ('albums','Albums'),
-        ('books','Books')
-    ]
-    name = models.CharField(max_length=20, choices=type_news, unique=True)
+    name = models.CharField(max_length=20, choices=NewsTypeChoices.choices, unique=True)
+
+    def __str__(self):
+        return self.get_name_display()
 
 
 class News(BaseModel):
     title = models.CharField(max_length=200)
     main_text = models.TextField()
-    photo = models.ImageField(upload_to='news/photoes/')
+    photo = models.ImageField(upload_to='news/photos/')
     published_at = models.DateTimeField(auto_now_add=True)
     type = models.ForeignKey(NewsType, on_delete=models.SET_NULL, null=True, related_name='news')
 
@@ -24,7 +27,11 @@ class News(BaseModel):
 
     def like_count(self):
         return self.likes.count()
-        
+
+    class Meta:
+        ordering = ['-published_at']
+
+
 class Comment(BaseModel):
     news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -33,28 +40,30 @@ class Comment(BaseModel):
     def __str__(self):
         return f"{self.author.username} — {self.text[:30]}"
 
-
     def like_count(self):
         return self.likes.count()
 
-class CommentLikes(models.Model):
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='likeses')
+    class Meta:
+        ordering = ['-created_at']
+
+
+class CommentLikes(BaseModel):
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE, related_name='likes')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('comment', 'user')  # Один пользователь — один лайк на комментарий
+        unique_together = ('comment', 'user')
 
     def __str__(self):
         return f"{self.user.username} liked comment {self.comment.id}"
 
 
-
-class NewsLike(models.Model):
+class NewsLike(BaseModel):
     news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='likes')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('news', 'user')  # Один пользователь — один лайк на одну новость
+        unique_together = ('news', 'user')
 
     def __str__(self):
         return f"{self.user.username} liked news '{self.news.title}'"

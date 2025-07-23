@@ -1,7 +1,7 @@
 from django.urls import path
 
 from main_app.views.print_filter_obj.main_filter_print import (
-    news_detail, news_list, main_page, all_pictures_view
+    main_page
 )
 from main_app.views.registration_and_log.log_registration import (
     login_view, register_view, logout_view
@@ -13,6 +13,10 @@ from main_app.views_sets.Albums.albums import add_comment_album,  like_album,  \
 from main_app.views_sets.Books.books import (
     like_comment, like_book, delete_comment, update_comment, book_list, add_comment
 )
+from main_app.views_sets.News.newses import add_comment_news, delete_comment_news, update_comment_news, like_news, \
+    like_comment_news, news_list
+from main_app.views_sets.Pictures_crud.picture import update_comment_picture, delete_comment_picture, \
+    like_comment_picture, add_comment_picture, like_picture, picture_list
 from main_app.views_sets.contact_view.contact_view_message import contact_view
 from main_app.views_sets.email_connect_to_news.news_connect import subscribe_to_news
 
@@ -49,8 +53,18 @@ urlpatterns = [
 
     # Новости
     path('news/', news_list, name='news_list'),
-    path('news/<int:pk>/', news_detail, name='news_detail'),
+    path('news/<int:news_id>/comment/add/', add_comment_news, name='add_comment_news'),
+    path('news/comment/<int:comment_id>/delete/', delete_comment_news, name='delete_comment_news'),
+    path('news/comment/<int:comment_id>/edit/', update_comment_news, name='update_comment_news'),
+    path('news/<int:news_id>/like/', like_news, name='like_news'),
+    path('news/comment/<int:comment_id>/like/', like_comment_news, name='like_comment_news'),
 
     # Картины
-    path('all-pictures/', all_pictures_view, name='all_pictures'),
+    path('picture/', picture_list, name='picture_list'),
+    path('picture/<int:picture_id>/comment/add/', add_comment_picture, name='add_comment_picture'),
+    path('picture/comment/<int:comment_id>/delete/', delete_comment_picture, name='delete_comment_picture'),
+    path('picture/comment/<int:comment_id>/update/', update_comment_picture, name='update_comment_picture'),
+    path('picture/<int:picture_id>/like/', like_picture, name='like_picture'),
+
+    path('picture/comment/<int:comment_id>/like/', like_comment_picture, name='like_comment_picture'),
 ]
