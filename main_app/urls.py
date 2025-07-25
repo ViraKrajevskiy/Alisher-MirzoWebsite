@@ -61,10 +61,9 @@ urlpatterns = [
 
     # Картины
     path('picture/', picture_list, name='picture_list'),
-    path('picture/<int:picture_id>/comment/add/', add_comment_picture, name='add_comment_picture'),
-    path('picture/comment/<int:comment_id>/delete/', delete_comment_picture, name='delete_comment_picture'),
-    path('picture/comment/<int:comment_id>/update/', update_comment_picture, name='update_comment_picture'),
-    path('picture/<int:picture_id>/like/', like_picture, name='like_picture'),
-
+    path('picture/<int:picture_id>/like/', like_picture, name='like_picture'),  # ← ДОБАВЬ ЭТУ СТРОКУ
     path('picture/comment/<int:comment_id>/like/', like_comment_picture, name='like_comment_picture'),
+    path('add_comment_picture/<int:picture_id>/', add_comment_picture, name='add_comment_picture'),
+    path('delete_comment_picture/<int:comment_id>/', delete_comment_picture, name='delete_comment_picture'),
+    path('update_comment_picture/<int:comment_id>/', update_comment_picture, name='update_comment_picture'),
 ]

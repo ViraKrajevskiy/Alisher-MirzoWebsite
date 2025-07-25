@@ -11,6 +11,7 @@ class Picture(BaseModel):
     def __str__(self):
         return self.title
 
+
     def like_count(self):
         return self.likes.count()
 
@@ -19,6 +20,7 @@ class CommentPicture(BaseModel):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(max_length=700)
 
+
     def like_count(self):
         return self.likes.count()
 
@@ -26,7 +28,6 @@ class CommentPicture(BaseModel):
     def __str__(self):
         return f"{self.author.username or self.author.phone_number} — {self.text[:30]}"
         
-
 
 class CommentPictureLike(models.Model):
     comment = models.ForeignKey(CommentPicture, on_delete=models.CASCADE, related_name='likes')
