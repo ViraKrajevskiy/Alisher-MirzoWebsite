@@ -17,11 +17,15 @@ from main_app.views_sets.News.newses import add_comment_news, delete_comment_new
     like_comment_news, news_list
 from main_app.views_sets.Pictures_crud.picture import update_comment_picture, delete_comment_picture, \
     like_comment_picture, add_comment_picture, like_picture, picture_list
+from main_app.views_sets.biography.biography import biography
 from main_app.views_sets.contact_view.contact_view_message import contact_view
 from main_app.views_sets.email_connect_to_news.news_connect import subscribe_to_news
 
 urlpatterns = [
     path('', main_page, name='home'),
+
+    # Биография
+    path('biography/',biography,name='biography'),
 
     # Контакты и подписка
     path('contact/', contact_view, name='contact'),
