@@ -20,9 +20,17 @@ from main_app.views_sets.Pictures_crud.picture import update_comment_picture, de
 from main_app.views_sets.biography.biography import biography
 from main_app.views_sets.contact_view.contact_view_message import contact_view
 from main_app.views_sets.email_connect_to_news.news_connect import subscribe_to_news
+from main_app.views_sets.user_account.changepasswordandother import add_phone, edit_profile, change_password
+from main_app.views_sets.user_account.user_account import user_account_see
 
 urlpatterns = [
     path('', main_page, name='home'),
+
+    # данные пользователя
+    path('user_data/',user_account_see, name='account' ),
+    path('add-phone/', add_phone, name='add-phone'),
+    path('edit-profile/', edit_profile, name='edit-profile'),
+    path('change-password/', change_password, name='change-password'),
 
     # Биография
     path('biography/',biography,name='biography'),

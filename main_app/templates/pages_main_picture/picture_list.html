@@ -54,9 +54,7 @@
                             <span class="navbar-text text-white">{{ request.user.username }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Профиль</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-heart me-2"></i>Избранное</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'account' %}"><i class="bi bi-person me-2"></i>Профиль</a></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right me-2"></i>Выйти</a></li>
                         </ul>
                     </div>

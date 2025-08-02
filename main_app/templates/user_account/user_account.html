@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <style>
+        :root {
+            --primary-color: #8e6f50;        /* Коричневый */
+            --primary-hover: #7a5f45;
+            --secondary-color: #a2a67d;      /* Оливково-зелёный */
+            --secondary-hover: #8b926d;
+            --text-color: #3e2f1c;
+            --light-text: #5f4b36;
+            --background: #d9c39e;           /* Запрошенный цвет */
+            --card-bg: #fdf7ee;              /* Светлая карта */
+            --border-color: #e0d3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--background);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .profile-info {
+            margin-bottom: 25px;
+        }
+
+        .profile-info p {
+            margin: 15px 0;
+            font-size: 16px;
+        }
+
+        .profile-info strong {
+            display: inline-block;
+            width: 150px;
+            color: var(--light-text);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            margin-left: 15px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-hover);
+        }
+
+        .password-field {
+            position: relative;
+            display: inline-block;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: -70px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .profile-info strong {
+                display: block;
+                width: auto;
+                margin-bottom: 5px;
+            }
+
+            .password-toggle {
+                position: static;
+                display: block;
+                margin-top: 5px;
+                transform: none;
+            }
+
+            .btn-secondary {
+                margin-left: 0;
+                margin-top: 10px;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Профиль пользователя</h2>
+
+        <div class="profile-info">
+            <p><strong>Имя пользователя:</strong> <span id="username">{{ user.username }}</span></p>
+            <p><strong>Email:</strong> <span id="email">{{ user.email }}</span></p>
+            <p><strong>Телефон:</strong>
+                {% if user.phone_number %}
+                    <span id="phone">{{ user.phone_number }}</span>
+                {% else %}
+                    <em>Не указан</em>
+                    <a href="{% url 'add-phone' %}" class="btn btn-secondary">Указать номер телефона</a>
+                {% endif %}
+            </p>
+            <p class="password-field">
+                <strong>Пароль:</strong>
+                <span id="password-display">••••••••</span>
+            </p>
+        </div>
+
+        <a href="{% url 'change-password' %}" class="btn btn-primary">Сменить пароль</a>
+        <a href="{% url 'edit-profile' %}" class="btn btn-secondary">Редактировать профиль</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const passwordDisplay = document.getElementById('password-display');
+            const togglePassword = document.getElementById('toggle-password');
+
+            togglePassword.addEventListener('click', function () {
+                if (passwordDisplay.textContent === '••••••••') {
+                    passwordDisplay.textContent = 'Пароль скрыт';
+                    togglePassword.textContent = 'Скрыть';
+                } else {
+                    passwordDisplay.textContent = '••••••••';
+                    togglePassword.textContent = 'Показать';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
