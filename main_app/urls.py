@@ -15,10 +15,13 @@ from main_app.views_sets.Books.books import (
 )
 from main_app.views_sets.News.newses import add_comment_news, delete_comment_news, update_comment_news, like_news, \
     like_comment_news, news_list
+
 from main_app.views_sets.Pictures_crud.picture import update_comment_picture, delete_comment_picture, \
     like_comment_picture, add_comment_picture, like_picture, picture_list
 from main_app.views_sets.biography.biography import biography
 from main_app.views_sets.contact_view.contact_view_message import contact_view
+from main_app.views_sets.email_change_password.confirm_code import confirm_code_and_reset_password
+from main_app.views_sets.email_change_password.emailenter import request_password_reset
 from main_app.views_sets.email_connect_to_news.news_connect import subscribe_to_news
 from main_app.views_sets.user_account.changepasswordandother import add_phone, edit_profile, change_password
 from main_app.views_sets.user_account.user_account import user_account_see
@@ -27,6 +30,8 @@ urlpatterns = [
     path('', main_page, name='home'),
 
     # данные пользователя
+    path('password-reset/', request_password_reset, name='request_password_reset'),
+    path('confirm-code/', confirm_code_and_reset_password, name='confirm_code'),
     path('user_data/',user_account_see, name='account' ),
     path('add-phone/', add_phone, name='add-phone'),
     path('edit-profile/', edit_profile, name='edit-profile'),

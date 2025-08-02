@@ -1,9 +1,6 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import update_session_auth_hash
 from main_app.forms.account.user_account import PhoneNumberForm, EditProfileForm, CustomPasswordChangeForm
-
-
 
 def add_phone(request):
     user = request.user
@@ -34,7 +31,7 @@ def change_password(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Чтобы не разлогинило
-            return redirect('profile')
+            return redirect('account')
     else:
         form = CustomPasswordChangeForm(user=request.user)
     return render(request, 'account/change_password.html', {'form': form})

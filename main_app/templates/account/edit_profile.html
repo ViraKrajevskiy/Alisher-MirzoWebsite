@@ -1,6 +1,22 @@
-<h2>Редактирование профиля</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Сохранить</button>
-</form>
+<!doctype html>
+{% load static %}
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/account_things/account_things.css' %}">
+             <title>Изменить данные профиля</title>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Редактирование профиля</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Сохранить</button>
+        </form>
+        <a href="{% url 'account' %}" class="btn secondary">Назад в профиль</a>
+    </div>
+
+</body>
+</html>

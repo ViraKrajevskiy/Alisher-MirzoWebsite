@@ -6,13 +6,13 @@
     <title>Профиль пользователя</title>
     <style>
         :root {
-            --primary-color: #8e6f50;        /* Коричневый */
+            --primary-color: #3e2a1f;        /* Коричневый */
             --primary-hover: #7a5f45;
-            --secondary-color: #a2a67d;      /* Оливково-зелёный */
-            --secondary-hover: #8b926d;
+            --secondary-color: #3e2a1f;      /* Оливково-зелёный */
+            --secondary-hover: #7a5f45;
             --text-color: #3e2f1c;
             --light-text: #5f4b36;
-            --background: #d9c39e;           /* Запрошенный цвет */
+            --background: #f5ddc1;           /* Запрошенный цвет */
             --card-bg: #fdf7ee;              /* Светлая карта */
             --border-color: #e0d3b8;
         }
@@ -59,10 +59,11 @@
             width: 150px;
             color: var(--light-text);
         }
-
         .btn {
             display: inline-block;
             padding: 10px 20px;
+            min-width: 180px;
+            text-align: center;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -70,7 +71,7 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 10px;
+            margin: 10px 10px 0 0; /* Отступ справа и сверху */
         }
 
         .btn-primary {
@@ -83,51 +84,28 @@
 
         .btn-secondary {
             background-color: var(--secondary-color);
-            margin-left: 15px;
         }
 
         .btn-secondary:hover {
             background-color: var(--secondary-hover);
         }
 
-        .password-field {
-            position: relative;
-            display: inline-block;
-        }
-
-        .password-toggle {
-            position: absolute;
-            right: -70px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: var(--primary-color);
-            font-size: 14px;
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Расстояние между кнопками */
+            margin-top: 20px;
         }
 
         @media (max-width: 600px) {
-            .container {
-                margin: 20px;
-                padding: 20px;
+            .btn-group {
+                flex-direction: column;
+                align-items: stretch;
             }
 
-            .profile-info strong {
-                display: block;
-                width: auto;
-                margin-bottom: 5px;
-            }
-
-            .password-toggle {
-                position: static;
-                display: block;
-                margin-top: 5px;
-                transform: none;
-            }
-
-            .btn-secondary {
-                margin-left: 0;
-                margin-top: 10px;
-                display: block;
+            .btn {
+                width: 100%;
+                margin: 0 0 10px 0;
             }
         }
     </style>
@@ -152,7 +130,7 @@
                 <span id="password-display">••••••••</span>
             </p>
         </div>
-
+        <a href="{% url 'home' %}" class="btn btn-secondary">На главную</a>
         <a href="{% url 'change-password' %}" class="btn btn-primary">Сменить пароль</a>
         <a href="{% url 'edit-profile' %}" class="btn btn-secondary">Редактировать профиль</a>
     </div>

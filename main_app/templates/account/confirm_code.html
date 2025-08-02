@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Подтверждение кода</title>
+  <style>
+    body {
+      background-color: #f5ddc1;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .form-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 8px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #7a5f45;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <form method="post" class="form-box">
+    {% csrf_token %}
+    <h2>Введите код и новый пароль</h2>
+    <label>Код:</label>
+    <input type="text" name="code" maxlength="6" required>
+    <label>Новый пароль:</label>
+    <input type="password" name="password" required>
+    <button type="submit">Сменить пароль</button>
+  </form>
+</body>
+</html>
