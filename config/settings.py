@@ -3,7 +3,7 @@ import os
 from decouple import config
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','164.94.252.126']
 
 SECRET_KEY = config('SECRET_KEY')
 # S
@@ -16,7 +16,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.mailgun.org'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
