@@ -23,6 +23,7 @@ from main_app.views_sets.contact_view.contact_view_message import contact_view
 from main_app.views_sets.email_change_password.confirm_code import confirm_code_and_reset_password
 from main_app.views_sets.email_change_password.emailenter import request_password_reset
 from main_app.views_sets.email_connect_to_news.news_connect import subscribe_to_news
+from main_app.views_sets.login_enter_code_email.login_request import login_with_code_request, login_with_code_confirm
 from main_app.views_sets.user_account.changepasswordandother import add_phone, edit_profile, change_password
 from main_app.views_sets.user_account.user_account import user_account_see
 
@@ -45,6 +46,10 @@ urlpatterns = [
     path('subscribe/', subscribe_to_news, name='subscribe_to_news'),
 
     # Аутентификация
+    path("login/code/", login_with_code_request, name="login_code_request"),
+    path("login/code/confirm/", login_with_code_confirm, name="login_code_confirm"),
+    # смена пароля
+
     path('register/', register_view, name='register'),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),

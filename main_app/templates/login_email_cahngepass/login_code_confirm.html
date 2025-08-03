@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Подтверждение кода</title>
+  <style>
+    body {
+      background-color: #f5ddc1;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #3e2a1f;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #5a3a2d;
+    }
+  </style>
+</head>
+<body>
+  <form method="post">
+    {% csrf_token %}
+    <h2>Введите код из письма</h2>
+    <input type="text" name="code" required placeholder="6-значный код">
+    <button type="submit">Войти</button>
+  </form>
+</body>
+</html>

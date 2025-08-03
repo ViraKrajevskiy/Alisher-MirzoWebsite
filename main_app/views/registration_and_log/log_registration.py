@@ -1,12 +1,12 @@
-from django.contrib.auth import login, logout
-from main_app.forms.login import UsernameOrEmailLoginForm
+from django.contrib.auth import logout
+
 from random import randint
-from django.shortcuts import redirect, render
+
 from django.contrib.auth import get_user_model
 from main_app.forms.forms import RegisterForm
 from django.core.mail import send_mail
 from django.utils import timezone
-from django.contrib import messages
+
 
 def generate_code():
     return str(randint(100000, 999999))

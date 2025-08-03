@@ -33,7 +33,7 @@
                 <label for="id_password">Пароль</label>
                 <input type="password" name="password" id="id_password" required>
                 <span class="password-toggle">👁️</span>
-                <a href="#" class="forgot-password">Забыли пароль?</a>
+                <a href="{% url 'login_code_request' %}" class="forgot-password">Забыли пароль?</a>
             </div>
 
             <button type="submit" class="btn">Войти</button>
