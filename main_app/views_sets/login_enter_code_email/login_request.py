@@ -37,6 +37,7 @@ def login_with_code_request(request):
                 fail_silently=False,
             )
 
+            # Сохраняем user.id вместо email
             request.session["login_code_user_id"] = user.id
             return redirect("login_code_confirm")
 
@@ -44,7 +45,6 @@ def login_with_code_request(request):
 
 
 
-from django.contrib.auth import login
 
 from django.contrib.auth import login
 from django.utils import timezone
@@ -56,14 +56,18 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 def login_with_code_confirm(request):
-    email = request.session.get("login_code_email")
-    if not email:
-        return redirect("login_with_code")
+    user_id = request.session.get("login_code_user_id")
+    if not user_id:
+        return redirect("login_code_request")
+
+    user = User.objects.filter(id=user_id).first()
+    if not user:
+        return redirect("login_code_request")
 
     if request.method == "POST":
         code = request.POST.get("code")
-        try:
-            user = User.objects.get(email=email, confirmation_code=code)
+        print(f"Полученный код: {code}, ожидаемый: {user.confirmation_code}")
+        if user.confirmation_code == code:
             if user.code_created_at and timezone.now() - user.code_created_at > timedelta(minutes=10):
                 messages.error(request, "Код истёк.")
             else:
@@ -71,12 +75,12 @@ def login_with_code_confirm(request):
                 user.code_created_at = None
                 user.save()
 
-                # ✅ Укажем backend
                 user.backend = 'django.contrib.auth.backends.ModelBackend'
-                login(request, user)
-
+                login(request, user)  # Без user.backend
+                print("✅ Пользователь вошёл. Редирект на home.")
                 return redirect("home")
-        except User.DoesNotExist:
+        else:
             messages.error(request, "Неверный код.")
 
-    return render(request, "login_email_changepass/login_code_confirm.html", {"email": email})
+
+    return render(request, "login_code_confirm.html", {"email": user.email})

@@ -47,7 +47,7 @@ urlpatterns = [
 
     # Аутентификация
     path("login/code/", login_with_code_request, name="login_code_request"),
-    path("login/code/confirm/", login_with_code_confirm, name="login_code_confirm"),
+    path("login/confirm/", login_with_code_confirm, name="login_code_confirm"),
     # смена пароля
 
     path('register/', register_view, name='register'),
