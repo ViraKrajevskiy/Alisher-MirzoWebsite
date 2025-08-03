@@ -1,12 +1,12 @@
 from pathlib import Path
 import os
-from decouple import config, Csv
+from decouple import config
 
 
-ALLOWED_HOSTS = ['164.92.252.126']
+ALLOWED_HOSTS = []
 
 SECRET_KEY = config('SECRET_KEY')
-
+# S
 DEBUG = config('DEBUG', default=False, cast=bool)
 # ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
