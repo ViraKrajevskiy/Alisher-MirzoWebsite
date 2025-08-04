@@ -1,31 +1,42 @@
-from django.core.mail import send_mail
 from django.shortcuts import redirect
 from django.contrib import messages
-from main_app.models import NewsSubscriber
+from django.core.mail import send_mail
+from main_app.models.model_news.news import NewsSubscriber
 
 def subscribe_to_news(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        honeypot = request.POST.get('website')  # для защиты от ботов
+        website = request.POST.get('website')  # honeypot
 
-        if honeypot:
-            return redirect('home')  # бот, выходим
+        if website:  # бот
+            return redirect(request.META.get('HTTP_REFERER', '/'))
 
-        if email and not NewsSubscriber.objects.filter(email=email).exists():
-            NewsSubscriber.objects.create(email=email)
-
-            # Отправка письма
-            send_mail(
-                subject='Подписка на новости',
-                message='Спасибо за подписку! Вы будете получать обновления на ваш email.',
-                from_email=None,  # или укажи DEFAULT_FROM_EMAIL
-                recipient_list=[email],
-                fail_silently=False,
-            )
-
-            messages.success(request, 'Вы успешно подписались на новости!')
+        if request.user.is_authenticated:
+            obj, created = NewsSubscriber.objects.get_or_create(user=request.user)
+            if created:
+                messages.success(request, "Вы подписались на новости!")
+                send_mail(
+                    subject='Подписка на новости',
+                    message='Спасибо за подписку, вы будете получать новости сайта.',
+                    from_email='no-reply@твойдомен.uz',
+                    recipient_list=[request.user.email],
+                    fail_silently=False,
+                )
+            else:
+                messages.info(request, "Вы уже подписаны.")
         else:
-            messages.info(request, 'Вы уже подписаны на новости.')
+            if email and not NewsSubscriber.objects.filter(email=email).exists():
+                NewsSubscriber.objects.create(email=email)
+                messages.success(request, "Вы подписались на новости!")
+                send_mail(
+                    subject='Подписка на новости',
+                    message='Спасибо за подписку, вы будете получать новости сайта.',
+                    from_email='no-reply@твойдомен.uz',
+                    recipient_list=[email],
+                    fail_silently=False,
+                )
+            else:
+                messages.info(request, "Этот email уже подписан.")
 
-    return redirect('home')
+    return redirect(request.META.get('HTTP_REFERER', '/'))
     

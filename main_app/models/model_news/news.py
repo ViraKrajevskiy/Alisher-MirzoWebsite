@@ -67,4 +67,17 @@ class NewsLike(BaseModel):
 
     def __str__(self):
         return f"{self.user.username} liked news '{self.news.title}'"
-        
+
+class NewsSubscriber(BaseModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='news_subscriptions')
+    email = models.EmailField(null=True, blank=True, unique=True)
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user'], name='unique_news_user_sub')  # если user
+        ]
+
+    def __str__(self):
+        return self.user.email if self.user else self.email
+

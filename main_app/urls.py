@@ -43,7 +43,6 @@ urlpatterns = [
 
     # Контакты и подписка
     path('contact/', contact_view, name='contact'),
-    path('subscribe/', subscribe_to_news, name='subscribe_to_news'),
 
     # Аутентификация
     path("login/code/", login_with_code_request, name="login_code_request"),
@@ -74,6 +73,8 @@ urlpatterns = [
 
 
     # Новости
+    path('subscribe/', subscribe_to_news, name='subscribe_to_news'),
+
     path('news/', news_list, name='news_list'),
     path('news/<int:news_id>/comment/add/', add_comment_news, name='add_comment_news'),
     path('news/comment/<int:comment_id>/delete/', delete_comment_news, name='delete_comment_news'),
