@@ -1,0 +1,73 @@
+/* --- Книги и комментарии (в теплых тонах) --- */
+
+/* Карточка книги */
+.book-card {
+    cursor: pointer; /* курсор становится указателем */
+    transition: all 0.3s; /* плавный переход эффектов */
+    margin-bottom: 20px; /* отступ снизу между карточками */
+    background-color: #f5ddc1; /* тёплый бежевый фон */
+    border-radius: 10px; /* скруглённые углы */
+    box-shadow: 0 4px 8px rgba(90, 62, 54, 0.15); /* мягкая тень */
+    padding: 15px; /* внутренний отступ */
+}
+
+/* Эффект наведения на карточку книги */
+.book-card:hover {
+    box-shadow: 0 6px 14px rgba(90, 62, 54, 0.2); /* усиление тени при наведении */
+}
+
+/* Отступ и стиль количества лайков для книги и комментариев */
+.book-like span,
+.comment-like span {
+    color: inherit; /* цвет унаследован от родителя */
+    margin-left: 4px; /* небольшой отступ слева */
+}
+
+/* Раскрываемый блок с дополнительной информацией о книге */
+.expanded-content {
+    display: none; /* изначально скрыт */
+    padding: 20px; /* отступ внутри */
+    background-color: #fae8d4; /* светлый тёплый фон */
+    border-top: 1px solid #a18f7f; /* верхняя граница */
+    border-radius: 0 0 10px 10px; /* скругление только нижних углов */
+}
+
+/* Секция с комментариями к книге */
+.comments-section {
+    margin-top: 30px; /* отступ сверху */
+    padding: 20px; /* внутренний отступ */
+    background-color: #a18f7f; /* тёплый коричневатый фон */
+    backdrop-filter: blur(5px); /* лёгкое размытие фона */
+    border-radius: 10px; /* скруглённые углы */
+    box-shadow: 0 2px 6px rgba(90, 62, 54, 0.15); /* мягкая тень */
+}
+
+/* Каждый отдельный комментарий */
+.comment {
+    margin-bottom: 15px; /* отступ снизу между комментариями */
+    padding: 15px; /* внутренний отступ */
+    background-color: #FFFFFF; /* белый фон комментария */
+    border-radius: 8px; /* скругление углов */
+    box-shadow: 0 2px 5px rgba(90, 62, 54, 0.05); /* лёгкая тень */
+    color: #3b2a26; /* тёмно-коричневый текст */
+    font-size: 0.95rem; /* немного меньше стандартного размера шрифта */
+}
+
+/* Кнопки лайков (общий стиль) */
+.like-btn,
+.comment-like,
+.book-like {
+    cursor: pointer; /* курсор-палец */
+    color: #5a3e36; /* тёплый коричневый цвет */
+    transition: all 0.2s; /* плавный переход при наведении */
+}
+
+/* Состояние наведения и активности (нажатия) кнопок */
+.like-btn:hover,
+.like-btn.active,
+.comment-like:hover,
+.comment-like.active,
+.book-like:hover,
+.book-like.active {
+    color: #fa0f13; /* ярко-красный цвет при наведении или если кнопка активна */
+}
