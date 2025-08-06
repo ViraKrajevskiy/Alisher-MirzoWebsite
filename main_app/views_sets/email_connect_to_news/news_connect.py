@@ -40,3 +40,17 @@ def subscribe_to_news(request):
 
     return redirect(request.META.get('HTTP_REFERER', '/'))
     
+
+def unsubscribe_from_news(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            deleted, _ = NewsSubscriber.objects.filter(email=email).delete()
+            if deleted:
+                messages.success(request, "Вы успешно отписались от рассылки.")
+            else:
+                messages.error(request, "Email не найден в списке подписчиков.")
+        else:
+            messages.error(request, "Пожалуйста, укажите email.")
+        return redirect('home')  # или другая страница
+    return render(request, 'unsubscribe.html')
