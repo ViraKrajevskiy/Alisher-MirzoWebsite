@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/biography/biography.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg sticky-top custom-navbar">
@@ -24,9 +23,6 @@
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'home' %}">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'biography' %}">Биография</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'picture_list' %}">Творчество</a>
@@ -69,125 +65,95 @@
 
     <section class="bio-section">
         <div class="container">
-            <div class="bio-header">
-                <h1>Алишер Мирзо</h1>
-                <div class="subtitle">Художник, писатель - мастер, чье творчество стало мостом между традицией и современностью</div>
-            </div>
+            <header class="bio-header">
+                <h1>Творческий путь Народного художника Узбекистана</h1>
+                <div class="subtitle">До настоящего времени с 1948 года до 2025 года</div>
+            </header>
 
             <div class="bio-content">
                 <div class="bio-image">
-                     <img src="{% static 'images/alisher-mirzo.jpg' %}" alt="Фото художника" class="img-fluid rounded artist-photo">
+                    <img src="{% static 'images/alisher-mirzo.jpg' %}" alt="Алишер Мирзо" class="artist-photo">
                 </div>
-
                 <div class="bio-text">
-                    <p>Алишер Мирзо - выдающийся современный художник и писатель, чье творчество получило международное признание. Родился в Ташкенте, где с ранних лет проявил интерес к искусству и литературе.</p>
-
-                    <p>Его художественный стиль, сочетающий элементы восточной миниатюры с современной абстракцией, создает уникальный визуальный язык, который рассказывает истории о человеческой природе, культурной памяти и духовных поисках.</p>
-
-                    <p>Как писатель, Алишер Мирзо известен своими философскими эссе и поэтическими произведениями, в которых исследует темы идентичности, времени и трансцендентности. Его литературные работы переведены на несколько языков и стали предметом академических исследований.</p>
-
-                    <p>Помимо творческой деятельности, Алишер Мирзо активно участвует в культурных и образовательных проектах, проводя мастер-классы и лекции по всему миру. Его работы находятся в коллекциях ведущих музеев и частных собраниях в Европе, Азии и Америке.</p>
-
-                    <div class="container">
-        <header>
-            <h1>Творческий путь Народного художника Узбекистана</h1>
-            <div class="subtitle">21 марта 1948 года - настоящее время</div>
-        </header>
-        <div class="timeline">
-                <!-- Левая колонка -->
-                <div class="timeline-column">
-                    <div class="timeline-item left highlight">
-                        <div class="timeline-year">1964</div>
-                        <div class="timeline-desc">Учащийся Республиканского художественного училища им. П.П. Бенькова. Руководитель - А. П. Перов</div>
-                    </div>
-
-                    <div class="timeline-item left">
-                        <div class="timeline-year">1974</div>
-                        <div class="timeline-desc">Преподаватель архитектурного факультета Ташкентского политехнического института им. Беруни</div>
-                    </div>
-
-                    <div class="timeline-item left highlight">
-                        <div class="timeline-year">1977</div>
-                        <div class="timeline-desc">Первая персональная выставка в Ташкенте. Участие в передвижной выставке «Молодежь страны»</div>
-                    </div>
-
-                    <div class="timeline-item left">
-                        <div class="timeline-year">1983</div>
-                        <div class="timeline-desc">Персональная выставка в Центральном выставочном зале Ташкента. Участие в «Днях культуры Узбекистана в ФРГ»</div>
-                    </div>
-
-                    <div class="timeline-item left highlight">
-                        <div class="timeline-year">1992</div>
-                        <div class="timeline-desc">Присвоено звание «Народный художник Узбекистана»</div>
-                    </div>
-
-                    <div class="timeline-item left">
-                        <div class="timeline-year">2009</div>
-                        <div class="timeline-desc">Персональная выставка «Песня Ташкента» в Центральном Доме Художника, Ташкент</div>
-                    </div>
-
-                    <div class="timeline-item left highlight">
-                        <div class="timeline-year">2015</div>
-                        <div class="timeline-desc">Публикация первого романа «Каллахоналик йигитча», признанного «Лучшим романом года»</div>
-                    </div>
-                </div>
-
-                <!-- Центральная линия с ключевыми датами -->
-                <div class="timeline-center">
-                    <div class="timeline-center-line"></div>
-                    <div class="timeline-center-item birth-item">1948</div>
-                    <div class="timeline-center-line"></div>
-                    <div class="timeline-center-item">1968</div>
-                    <div class="timeline-center-line"></div>
-                    <div class="timeline-center-item highlight">1978</div>
-                    <div class="timeline-center-line"></div>
-                    <div class="timeline-center-item">1997</div>
-                    <div class="timeline-center-line"></div>
-                    <div class="timeline-center-item highlight">2011</div>
-                    <div class="timeline-center-line"></div>
-                    <div class="timeline-center-item">2024</div>
-                    <div class="timeline-center-line"></div>
-                </div>
-
-                <!-- Правая колонка -->
-                <div class="timeline-column">
-                    <div class="timeline-item right">
-                        <div class="timeline-year">1968</div>
-                        <div class="timeline-desc">Студент Московского государственного художественного института им. В. И. Сурикова</div>
-                    </div>
-
-                    <div class="timeline-item right highlight">
-                        <div class="timeline-year">1978</div>
-                        <div class="timeline-desc">Член Союза художников Узбекистана. Преподаватель Ташкентского театрально-художественного института</div>
-                    </div>
-
-                    <div class="timeline-item right">
-                        <div class="timeline-year">1986</div>
-                        <div class="timeline-desc">Награждение Дипломом Академии художеств России</div>
-                    </div>
-
-                    <div class="timeline-item right highlight">
-                        <div class="timeline-year">1994</div>
-                        <div class="timeline-desc">Лауреат Государственной премии имени Абдуллы Кадыри</div>
-                    </div>
-
-                    <div class="timeline-item right">
-                        <div class="timeline-year">1997</div>
-                        <div class="timeline-desc">Избран действительным членом Академии художеств Узбекистана. Профессор Национального института живописи и дизайна</div>
-                    </div>
-
-                    <div class="timeline-item right highlight">
-                        <div class="timeline-year">2011</div>
-                        <div class="timeline-desc">Присвоено звание почетного академика Российской академии художеств</div>
-                    </div>
-
-                    <div class="timeline-item right">
-                        <div class="timeline-year">2023</div>
-                        <div class="timeline-desc">Юбилейная персональная выставка «Шакл мазмуни сари» к 75-летию со дня рождения</div>
-                    </div>
+                    <p>Алишер Мирзо родился в 1948 году в городе Ташкент. Уже в школьные годы у него проявился интерес к изобразительному искусству. С раннего возраста он сделал искусство неотъемлемой частью своей жизни.</p>
+                    <p>После окончания средней школы он поступил в Республиканское художественное училище имени П.П. Бенькова, где под руководством наставника А.П.Перова овладел тонкостями живописи.</p>
+                    <p>По завершении учёбы продолжил образование в Московском государственном художественном институте имени В.И.Сурикова, где обучался у таких выдающихся мастеров, как Д.Д.Жилинский и А.М.Грицай.</p>
+                    <p>Алишер Мирзо – художник, работающий практически во всех жанрах. Свои ранние портреты, пейзажи, натюрморты, бытовые картины художник создает на основе постижения конкретного материала, почерпнутого из жизни узбекского народа.</p>
                 </div>
             </div>
-        </div>
+
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-column">
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1964</div>
+                            <div class="timeline-desc">Учащийся Республиканского художественного училища им. П.П. Бенькова. Руководитель - А. П. Перов</div>
+                        </div>
+
+                        <div class="timeline-item left">
+                            <div class="timeline-year">1974</div>
+                            <div class="timeline-desc">Преподаватель архитектурного факультета Ташкентского политехнического института им. Беруни</div>
+                        </div>
+
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1977</div>
+                            <div class="timeline-desc">Первая персональная выставка в Ташкенте. Участие в передвижной выставке «Молодежь страны»</div>
+                        </div>
+
+                        <div class="timeline-item left">
+                            <div class="timeline-year">1983</div>
+                            <div class="timeline-desc">Персональная выставка в Центральном выставочном зале Ташкента. Участие в «Днях культуры Узбекистана в ФРГ»</div>
+                        </div>
+
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1992</div>
+                            <div class="timeline-desc">Присвоено звание «Народный художник Узбекистана»</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-center">
+                        <div class="timeline-center-line"></div>
+                        <div class="timeline-center-item birth-item">1948</div>
+                        <div class="timeline-center-line"></div>
+                        <div class="timeline-center-item">1968</div>
+                        <div class="timeline-center-line"></div>
+                        <div class="timeline-center-item highlight">1978</div>
+                        <div class="timeline-center-line"></div>
+                        <div class="timeline-center-item">1997</div>
+                        <div class="timeline-center-line"></div>
+                        <div class="timeline-center-item highlight">2011</div>
+                        <div class="timeline-center-line"></div>
+                        <div class="timeline-center-item">2024</div>
+                        <div class="timeline-center-line"></div>
+                    </div>
+
+                    <div class="timeline-column">
+                        <div class="timeline-item right">
+                            <div class="timeline-year">1968</div>
+                            <div class="timeline-desc">Студент Московского государственного художественного института им. В. И. Сурикова</div>
+                        </div>
+
+                        <div class="timeline-item right highlight">
+                            <div class="timeline-year">1978</div>
+                            <div class="timeline-desc">Член Союза художников Узбекистана. Преподаватель Ташкентского театрально-художественного института</div>
+                        </div>
+
+                        <div class="timeline-item right">
+                            <div class="timeline-year">1986</div>
+                            <div class="timeline-desc">Награждение Дипломом Академии художеств России</div>
+                        </div>
+
+                        <div class="timeline-item right highlight">
+                            <div class="timeline-year">1994</div>
+                            <div class="timeline-desc">Лауреат Государственной премии имени Абдуллы Кадыри</div>
+                        </div>
+
+                        <div class="timeline-item right">
+                            <div class="timeline-year">1997</div>
+                            <div class="timeline-desc">Избран действительным членом Академии художеств Узбекистана. Профессор Национального института живописи и дизайна</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="awards-section">
@@ -217,120 +183,60 @@
                 </div>
             </div>
 
-            <div class="exhibitions-section">
-                <h3 class="section-title">Выставки</h3>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="exhibition-card">
-                            <div class="exhibition-name">"Традиция в современности"</div>
-                            <div class="exhibition-year">2015, Лувр, Париж</div>
-                            <div class="exhibition-description">Групповая выставка современных художников Востока</div>
+            <div class="video-section">
+                <div class="section-title">
+                    <h2>Видео и Интервью</h2>
+                </div>
+                <div class="video-grid">
+                    <div class="video-item">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/ff5x62Umy8M" allowfullscreen></iframe>
                         </div>
+                        <div class="video-title">Mahorat darsi | Урок мастерства с Алишером Мирзо</div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="exhibition-card">
-                            <div class="exhibition-name">"Одинокий путник"</div>
-                            <div class="exhibition-year">2017, ГМИИ им. Пушкина, Москва</div>
-                            <div class="exhibition-description">Персональная ретроспектива</div>
+                    <div class="video-item">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/tEraGIfdnKI" allowfullscreen></iframe>
                         </div>
+                        <div class="video-title">Беседа с художником и академиком Алишером Мирзо</div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="exhibition-card">
-                            <div class="exhibition-name">"Голоса земли"</div>
-                            <div class="exhibition-year">2018, Венецианская биеннале</div>
-                            <div class="exhibition-description">Специальный проект национального павильона</div>
+                    <div class="video-item">
+                        <div class="video-embed">
+                            <iframe src="https://www.youtube.com/embed/11oySWvrlwc" allowfullscreen></iframe>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="exhibition-card">
-                            <div class="exhibition-name">"Книга и кисть"</div>
-                            <div class="exhibition-year">2021, Галерея современного искусства, Ташкент</div>
-                            <div class="exhibition-description">Совместный проект живописи и литературы</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="exhibition-card">
-                            <div class="exhibition-name">"Книга и кисть"</div>
-                            <div class="exhibition-year">2021, Галерея современного искусства, Ташкент</div>
-                            <div class="exhibition-description">Совместный проект живописи и литературы</div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="exhibition-card">
-                            <div class="exhibition-name">"Книга и кисть"</div>
-                            <div class="exhibition-year">2021, Галерея современного искусства, Ташкент</div>
-                            <div class="exhibition-description">Совместный проект живописи и литературы</div>
-                        </div>
+                        <div class="video-title">О творчестве и философии искусства</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Видео и интервью -->
-    <section class="video-section">
-        <div class="section-title">
-            <h2>Видео и Интервью</h2>
-        </div>
-        <div class="video-grid">
-            <div class="video-item">
-                <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/ff5x62Umy8M" allowfullscreen></iframe>
-                </div>
-                <div class="video-title">Mahorat darsi | Урок мастерства с Алишером Мирзо</div>
-            </div>
-            <div class="video-item">
-                <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/tEraGIfdnKI" allowfullscreen></iframe>
-                </div>
-                <div class="video-title">Беседа с художником и академиком Алишером Мирзо</div>
-            </div>
-            <div class="video-item">
-                <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/11oySWvrlwc" allowfullscreen></iframe>
-                </div>
-                <div class="video-title">О творчестве и философии искусства</div>
-            </div>
-            <div class="video-item">
-                <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/ETKhlR-_2ks?si=NVc4rhoZ-5njj6js"  allowfullscreen></iframe>
-                </div>
-                <div class="video-title">Онлайн каталог художника алишера мирзо</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Контакты и форма -->
     <section class="py-5 warm-background">
         <div class="container">
             <div class="row">
-                {% if request.user.is_authenticated %}
-                <!-- Показываем форму -->
-                <form method="post" action="{% url 'contact' %}">
-                    {% csrf_token %}
-                    <!-- Email пользователя (readonly) -->
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Ваш Email</label>
-                        <input type="email" class="form-control" id="email" value="{{ request.user.email }}" readonly>
-                    </div>
-                    <!-- Тема -->
-                    <div class="mb-3">
-                        <label for="subject" class="form-label">Тема</label>
-                        <input type="text" class="form-control" id="subject" name="subject" required>
-                    </div>
-                    <!-- Сообщение -->
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Сообщение</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn custom-pictures-button">Отправить</button>
-                </form>
-                {% else %}
-                <!-- Показываем сообщение -->
-                <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a> в аккаунт, чтобы отправить сообщение.</p>
-                {% endif %}
-
-                <!-- Контакты -->
+                <div class="col-md-6">
+                    <h2 class="mb-4">Свяжитесь с нами</h2>
+                    {% if request.user.is_authenticated %}
+                    <form method="post" action="{% url 'contact' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Ваш Email</label>
+                            <input type="email" class="form-control" id="email" value="{{ request.user.email }}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Тема</label>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Сообщение</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn custom-pictures-button">Отправить</button>
+                    </form>
+                    {% else %}
+                    <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a> в аккаунт, чтобы отправить сообщение.</p>
+                    {% endif %}
+                </div>
                 <div class="col-md-6">
                     <h2 class="mb-4">Контакты</h2>
                     <p><i class="fas fa-envelope me-2"></i> alishermirzowork@gmail.com</p>
@@ -348,7 +254,6 @@
         </div>
     </section>
 
-    <!-- Футер -->
     <footer class="py-5 custom-footer">
         <div class="container">
             <div class="row g-4">
@@ -368,7 +273,6 @@
                         <li class="mb-2"><a href="{% url 'picture_list' %}" class="text-white text-decoration-none">Картины</a></li>
                         <li class="mb-2"><a href="{% url 'album_list' %}" class="text-white text-decoration-none">Альбомы</a></li>
                         <li class="mb-2"><a href="{% url 'book_list' %}" class="text-white text-decoration-none">Литература</a></li>
-                        <li class="mb-2"><a href="#contact" class="text-white text-decoration-none">Контакты</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -378,23 +282,21 @@
                         <li class="mb-2"><i class="bi bi-envelope me-2"></i>alishermirzowork@gmail.com</li>
                     </ul>
                 </div>
-                <div class="newsletter-box">
-                    <form method="post" action="{% url 'subscribe_to_news' %}">
-                        {% csrf_token %}
-
-                        <div class="mb-3">
-                            {% if request.user.is_authenticated %}
-                                <input type="email" name="email" class="form-control" value="{{ request.user.email }}" readonly>
-                            {% else %}
-                                <input type="email" name="email" class="form-control" placeholder="Ваш email" required>
-                            {% endif %}
-                        </div>
-
-                        <!-- honeypot поле для защиты от ботов -->
-                        <input type="text" name="website" style="display:none">
-
-                        <button type="submit" class="btn custom-main-button w-100">Подписаться</button>
-                    </form>
+                <div class="col-lg-3">
+                    <div class="newsletter-box">
+                        <h5 class="mb-3">Подписаться на новости</h5>
+                        <form method="post" action="{% url 'subscribe_to_news' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                {% if request.user.is_authenticated %}
+                                    <input type="email" name="email" class="form-control" value="{{ request.user.email }}" readonly>
+                                {% else %}
+                                    <input type="email" name="email" class="form-control" placeholder="Ваш email" required>
+                                {% endif %}
+                            </div>
+                            <button type="submit" class="btn custom-main-button w-100">Подписаться</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <hr class="my-4">
@@ -411,5 +313,15 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Скролл индикатор
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("scrollIndicator").style.width = scrolled + "%";
+        };
+    </script>
 </body>
 </html>
