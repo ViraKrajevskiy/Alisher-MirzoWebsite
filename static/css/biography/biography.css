@@ -280,3 +280,449 @@ footer a:hover {
     color: #fff7c0 !important;
     background-color: #5a3e36;
 }
+
+
+/* Основные стили для страницы биографии */
+.bio-section {
+    background-color: #fae8d4;
+    padding: 60px 0;
+}
+
+.bio-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.bio-header h1 {
+    font-family: 'Playfair Display', serif;
+    color: #5a3e36;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.bio-header .subtitle {
+    color: #785b54;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.bio-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.bio-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+    position: relative;
+}
+
+.bio-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(90, 62, 54, 0.2);
+    transition: transform 0.3s ease;
+    border: 5px solid white;
+}
+
+.bio-image img:hover {
+    transform: scale(1.02);
+}
+
+.bio-text {
+    flex: 2;
+    min-width: 300px;
+    max-width: 700px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(90, 62, 54, 0.1);
+}
+
+.bio-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #3b2a26;
+    margin-bottom: 20px;
+}
+
+/* Стили для временной шкалы */
+.timeline-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(90, 62, 54, 0.1);
+    margin-top: 40px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.timeline-center {
+    width: 150px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.timeline-center-line {
+    width: 4px;
+    background-color: #5a3e36;
+    flex-grow: 1;
+    border-radius: 2px;
+}
+
+.timeline-center-item {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white;
+    border: 6px solid #5a3e36;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #5a3e36;
+    font-weight: bold;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(90, 62, 54, 0.2);
+    z-index: 2;
+}
+
+.timeline-center-item.birth-item {
+    background-color: #5a3e36;
+    color: white;
+}
+
+.timeline-center-item.highlight {
+    border-color: #a18f7f;
+    color: #a18f7f;
+}
+
+.timeline-column {
+    width: calc(50% - 75px);
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-item {
+    padding: 20px;
+    margin: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(90, 62, 54, 0.1);
+    position: relative;
+    border: 1px solid #e0d0c0;
+}
+
+.timeline-item.left {
+    margin-right: 30px;
+}
+
+.timeline-item.right {
+    margin-left: 30px;
+}
+
+.timeline-year {
+    font-weight: 700;
+    color: #5a3e36;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.timeline-desc {
+    font-weight: 300;
+    color: #3b2a26;
+}
+
+.timeline-item.highlight {
+    background-color: rgba(161, 143, 127, 0.1);
+    border-left: 3px solid #5a3e36;
+}
+
+/* Стили для разделов наград и выставок */
+.awards-section, .exhibitions-section {
+    margin-top: 60px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(90, 62, 54, 0.1);
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    color: #5a3e36;
+    border-bottom: 2px solid #a18f7f;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.award-card, .exhibition-card {
+    background-color: #faf5f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(90, 62, 54, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e0d0c0;
+}
+
+.award-card:hover, .exhibition-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(90, 62, 54, 0.15);
+}
+
+.award-name, .exhibition-name {
+    font-weight: 600;
+    color: #5a3e36;
+    margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+}
+
+.award-year, .exhibition-year {
+    color: #a18f7f;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.award-description, .exhibition-description {
+    color: #3b2a26;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Стили для видео и интервью */
+.video-section {
+    padding: 60px 0;
+    background-color: #f5ddc1;
+}
+
+.video-section .section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.video-item {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(90, 62, 54, 0.1);
+    transition: all 0.3s ease;
+}
+
+.video-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(90, 62, 54, 0.2);
+}
+
+.video-embed {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-title {
+    padding: 15px;
+    font-weight: 600;
+    color: #5a3e36;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Адаптивные стили */
+@media (max-width: 992px) {
+    .timeline-column {
+        width: 100%;
+    }
+
+    .timeline-center {
+        width: 100%;
+        flex-direction: row;
+        height: 150px;
+        margin: 30px 0;
+    }
+
+    .timeline-center-line {
+        width: 100%;
+        height: 4px;
+    }
+
+    .timeline-center-item {
+        margin: 0 20px;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .bio-content {
+        flex-direction: column;
+    }
+
+    .bio-image {
+        max-width: 100%;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .bio-header h1 {
+        font-size: 2rem;
+    }
+
+    .timeline-center-item {
+        width: 80px;
+        height: 80px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .bio-section, .video-section {
+        padding: 40px 0;
+    }
+
+    .awards-section, .exhibitions-section {
+        margin-top: 40px;
+    }
+
+    .video-item {
+        margin-bottom: 20px;
+    }
+
+    .bio-text {
+        padding: 20px;
+    }
+
+    .timeline-item {
+        padding: 15px;
+    }
+}
+
+/* Общие стили для скролл-индикатора */
+.scroll-indicator {
+    height: 4px;
+    background: linear-gradient(to right, #a18f7f, #5a3e36);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: width 0.3s ease;
+}
+
+/* Стили для формы контактов */
+.contact-form {
+    background-color: #a18f7f;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(90, 62, 54, 0.2);
+}
+
+.contact-form .form-control {
+    background-color: #fae8d4;
+    border: 1px solid #5a3e36;
+    color: #3b2a26;
+}
+
+.contact-form .form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(90, 62, 54, 0.25);
+}
+
+/* Стили для кнопок */
+.custom-pictures-button {
+    background-color: #a18f7f;
+    border: 2px solid #5a3e36;
+    color: #3b2a26;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.custom-pictures-button:hover {
+    background-color: #5a3e36;
+    color: #fae8d4;
+}
+
+.custom-main-button {
+    background-color: #a18f7f !important;
+    border: none;
+    color: #3b2a26 !important;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.custom-main-button:hover {
+    background-color: #5a3e36 !important;
+    color: #d9c39e !important;
+}
+
+/* Стили для теплого фона */
+.warm-background {
+    background-color: #fae8d4 !important;
+}
+
+/* Дополнительные стили для временной шкалы */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 4px solid #5a3e36;
+    border-radius: 50%;
+    top: 25px;
+    z-index: 1;
+}
+
+.timeline-item.left::before {
+    right: -32px;
+}
+
+.timeline-item.right::before {
+    left: -32px;
+}
+
+.timeline-item.highlight::before {
+    border-color: #a18f7f;
+}
