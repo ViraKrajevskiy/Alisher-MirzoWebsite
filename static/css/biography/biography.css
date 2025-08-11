@@ -6,10 +6,7 @@ body {
 }
 
 .bio-block {
-    background: linear-gradient(
-        rgba(237, 247, 240),
-        rgba(245, 247, 246)
-    );
+    background: #f9f9f9;
     padding: 20px;
     border-radius: 12px;
     max-width: 1300px;
@@ -169,13 +166,10 @@ body {
 }
 
 .timeline {
-    position: relative;
-    width: 100%;
-    padding: 0 40px;
-    box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
 }
 
 .timeline-center {
@@ -223,9 +217,10 @@ body {
 }
 
 .timeline-column {
-    width: calc(50% - 75px);
+    flex: 1 1 300px; /* гибко растягивается, но минимум 300px */
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
 .timeline-item {
