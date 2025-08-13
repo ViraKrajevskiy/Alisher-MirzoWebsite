@@ -3,7 +3,7 @@ import os
 from decouple import config
 
 
-ALLOWED_HOSTS = ['127.0.0.1','164.94.252.126']
+ALLOWED_HOSTS = []
 
 SECRET_KEY = config('SECRET_KEY')
 # S
@@ -16,13 +16,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = 'alishermirzowork@gmail.com'          # ← твоя почта
-EMAIL_HOST_PASSWORD = 'eilk ywwf mmay gtba'    # ← тот 16-значный пароль
+EMAIL_HOST_PASSWORD = 'bzsfnhdrxnqdofcb'    # ← тот 16-значный пароль
 DEFAULT_FROM_EMAIL = 'ARTIST WRITER <alishermirzowork@gmail.com>'
+SITE_URL = 'SITE_URL = "http://164.92.252.126'
 
 # Application definition
 
@@ -33,9 +34,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main_app',
+    'main_app.apps.MainAppConfig',
+    'dashboard',
     'rest_framework',
-
 ]
 
 MIDDLEWARE = [
@@ -47,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -73,6 +75,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
