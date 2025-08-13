@@ -1,48 +1,56 @@
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
-from django.shortcuts import redirect
-from django.contrib import messages
 from main_app.views.services import SubscriptionService
-from main_app.models.model_news.news import NewsType
-from django.db.models import Q
-from django.utils import timezone
+from main_app.models.model_news.news import NewsSubscriber, NewsType
 
-@require_POST
+
+
 def subscribe_to_news(request):
-    """
-    Обычная форма подписки (без AJAX).
-    """
-    email = request.POST.get('email') if not request.user.is_authenticated else None
-    user = request.user if request.user.is_authenticated else None
-    news_type = request.POST.get('news_type')
-    all_types = request.POST.get('all_types') == 'on'
+    if request.method != "POST":
+        return redirect(request.META.get("HTTP_REFERER", "/"))
 
-    # Honeypot проверка
-    if request.POST.get('website'):
-        messages.warning(request, "Подозрительная активность, подписка не оформлена")
-        return redirect(request.META.get('HTTP_REFERER', 'home'))
+    # Получаем данные из формы
+    news_type_id = request.POST.get("news_type_id") or None
+    email = request.POST.get("email", "").strip()
 
-    # Проверка типа новости
-    if news_type and not NewsType.objects.filter(pk=news_type).exists():
-        messages.error(request, "Неверный тип новости")
-        return redirect(request.META.get('HTTP_REFERER', 'home'))
+    # Приводим news_type_id к int или None
+    if news_type_id:
+        try:
+            news_type_id = int(news_type_id)
+        except ValueError:
+            messages.error(request, "Неверный тип новости.")
+            return redirect(request.META.get("HTTP_REFERER", "/"))
+    else:
+        news_type_id = None  # Все новости
 
-    try:
-        _, _, confirmation_sent = SubscriptionService.subscribe(
+    if request.user.is_authenticated:
+        # Если авторизован — email из профиля и сразу confirmed=True
+        subscriber, created = NewsSubscriber.objects.get_or_create(
+            user=request.user,
+            news_type_id=news_type_id,
+            defaults={
+                "email": request.user.email,
+                "confirmed": True
+            }
+        )
+    else:
+        # Гость должен ввести email
+        if not email:
+            messages.error(request, "Email обязателен для подписки.")
+            return redirect(request.META.get("HTTP_REFERER", "/"))
+
+        subscriber, created = NewsSubscriber.objects.get_or_create(
             email=email,
-            user=user,
-            news_type_id=None if all_types else news_type
+            news_type_id=news_type_id,
+            defaults={"confirmed": False}
         )
 
-        if confirmation_sent:
-            messages.success(request, "Проверьте ваш email для подтверждения подписки")
-        else:
-            messages.success(request, "Вы успешно подписались на новости")
+    if created:
+        messages.success(request, "Вы успешно подписаны на новости!")
+    else:
+        messages.info(request, "Вы уже подписаны на выбранные новости.")
 
-    except Exception as e:
-        messages.error(request, str(e))
-
-    return redirect(request.META.get('HTTP_REFERER', 'home'))
+    return redirect(request.META.get("HTTP_REFERER", "/"))
 
 # views.py
 from django.shortcuts import redirect
