@@ -68,16 +68,83 @@ class NewsLike(BaseModel):
     def __str__(self):
         return f"{self.user.username} liked news '{self.news.title}'"
 
+from django.core.validators import EmailValidator
+from django.utils.crypto import get_random_string
+from datetime import timedelta
+from django.utils import timezone
+
 class NewsSubscriber(BaseModel):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='news_subscriptions')
-    email = models.EmailField(null=True, blank=True, unique=True)
-    subscribed_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='subscriptions'
+    )
+    email = models.EmailField(
+        null=True,
+        blank=True,
+        validators=[EmailValidator(message="Введите корректный email")]
+    )
+    news_type = models.ForeignKey(
+        NewsType,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name="Тип новостей"
+    )
+    is_active = models.BooleanField(default=True)
+    confirmation_token = models.CharField(max_length=64, blank=True)
+    confirmed = models.BooleanField(default=False)
+    expires_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        verbose_name="Истекает (для анонимов)"
+    )
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['user'], name='unique_news_user_sub')  # если user
+            # Постоянная подписка для пользователей
+            models.UniqueConstraint(
+                fields=['user', 'news_type'],
+                name='unique_user_subscription',
+                condition=models.Q(user__isnull=False)
+            ),
+            # Временная подписка для email
+            models.UniqueConstraint(
+                fields=['email', 'news_type'],
+                name='unique_email_subscription',
+                condition=models.Q(email__isnull=False)
+            ),
+            # Обязательно user ИЛИ email
+            models.CheckConstraint(
+                check=(models.Q(user__isnull=False) | models.Q(email__isnull=False)),
+                name='require_user_or_email'
+            )
         ]
+        verbose_name = "Подписчик новостей"
+        verbose_name_plural = "Подписчики новостей"
+
+    def save(self, *args, **kwargs):
+        # Генерация токена для анонимов
+        if not self.confirmation_token and self.email:
+            self.confirmation_token = get_random_string(64)
+
+        # Установка срока действия для анонимов
+        if self.email and not self.user and not self.expires_at:
+            self.expires_at = timezone.now() + timedelta(days=10)
+
+        super().save(*args, **kwargs)
+
+    @property
+    def is_expired(self):
+        return bool(
+            self.expires_at and
+            timezone.now() > self.expires_at
+        )
 
     def __str__(self):
-        return self.user.email if self.user else self.email
-
+        identifier = self.user.username if self.user else self.email
+        news_type = self.news_type.name if self.news_type else "все типы"
+        status = "активна" if self.is_active and not self.is_expired else "неактивна"
+        return f"{identifier} → {news_type} ({status})"

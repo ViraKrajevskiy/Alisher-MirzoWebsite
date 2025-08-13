@@ -267,24 +267,19 @@
                         <li class="mb-2"><i class="bi bi-envelope me-2"></i>alishermirzowork@gmail.com</li>
                     </ul>
                 </div>
-                <div class="newsletter-box">
-                    <form method="post" action="{% url 'subscribe_to_news' %}">
-                        {% csrf_token %}
+                <form action="{% url 'subscribe' %}" method="post">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="Ваш email" required>
+                    <select name="news_type_id">
+                        <option value="">Все новости</option>
+                        {% for type in news_types %}
+                            <option value="{{ type.id }}">{{ type.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Подписаться</button>
+                </form>
 
-                        <div class="mb-3">
-                            {% if request.user.is_authenticated %}
-                                <input type="email" name="email" class="form-control" value="{{ request.user.email }}" readonly>
-                            {% else %}
-                                <input type="email" name="email" class="form-control" placeholder="Ваш email" required>
-                            {% endif %}
-                        </div>
 
-                        <!-- honeypot поле для защиты от ботов -->
-                        <input type="text" name="website" style="display:none">
-
-                        <button type="submit" class="btn custom-main-button w-100">Подписаться</button>
-                    </form>
-                </div>
             </div>
             <hr class="my-4">
             <div class="row">
@@ -300,5 +295,7 @@
             </div>
         </div>
     </footer>
-    </body>
+
+
+</body>
 </html>
