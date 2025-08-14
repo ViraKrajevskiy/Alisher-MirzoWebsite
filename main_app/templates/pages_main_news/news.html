@@ -187,32 +187,7 @@
     <section class="py-5 warm-background">
         <div class="container">
             <div class="row">
-                {% if request.user.is_authenticated %}
-                <!-- Показываем форму -->
-                <form method="post" action="{% url 'contact' %}">
-                    {% csrf_token %}
-                    <!-- Email пользователя (readonly) -->
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Ваш Email</label>
-                        <input type="email" class="form-control" id="email" value="{{ request.user.email }}" readonly>
-                    </div>
-                    <!-- Тема -->
-                    <div class="mb-3">
-                        <label for="subject" class="form-label">Тема</label>
-                        <input type="text" class="form-control" id="subject" name="subject" required>
-                    </div>
-                    <!-- Сообщение -->
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Сообщение</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn custom-pictures-button">Отправить</button>
-                </form>
-                {% else %}
-                <!-- Показываем сообщение -->
-                <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a> в аккаунт, чтобы отправить сообщение.</p>
-                {% endif %}
-
+                
 
                 <!-- Контакты -->
                 <div class="col-md-6">
@@ -257,24 +232,8 @@
                     </ul>
                 </div>
 
-                <div class="newsletter-box">
-                    <form method="post" action="{% url 'subscribe_to_news' %}">
-                        {% csrf_token %}
 
-                        <div class="mb-3">
-                            {% if request.user.is_authenticated %}
-                                <input type="email" name="email" class="form-control" value="{{ request.user.email }}" readonly>
-                            {% else %}
-                                <input type="email" name="email" class="form-control" placeholder="Ваш email" required>
-                            {% endif %}
-                        </div>
 
-                        <!-- honeypot поле для защиты от ботов -->
-                        <input type="text" name="website" style="display:none">
-
-                        <button type="submit" class="btn custom-main-button w-100">Подписаться</button>
-                    </form>
-                </div>
             </div>
             <hr class="my-4">
             <div class="row">

@@ -22,8 +22,7 @@ from main_app.views_sets.biography.biography import biography
 from main_app.views_sets.contact_view.contact_view_message import contact_view
 from main_app.views_sets.email_change_password.confirm_code import confirm_code_and_reset_password
 from main_app.views_sets.email_change_password.emailenter import request_password_reset
-from main_app.views_sets.email_connect_to_news.news_connect import subscribe_to_news, unsubscribe_from_news, \
-    subscribe_view
+
 from main_app.views_sets.login_enter_code_email.login_request import login_with_code_request, login_with_code_confirm
 from main_app.views_sets.user_account.changepasswordandother import add_phone, edit_profile, change_password
 from main_app.views_sets.user_account.user_account import user_account_see
@@ -74,9 +73,6 @@ urlpatterns = [
 
 
     # Новости
-    path('subscribe/', subscribe_to_news, name='subscribe_to_news'),
-    path('unsubscribe/', unsubscribe_from_news, name='unsubscribe_from_news'),
-    path("subscribe/", subscribe_view, name="subscribe"),
 
     path('news/', news_list, name='news_list'),
     path('news/<int:news_id>/comment/add/', add_comment_news, name='add_comment_news'),

@@ -107,3 +107,4 @@ def news_list(request):
         'albums': news_items,
         'edit_comment_id': str(edit_comment_id) if edit_comment_id else None
     })
+

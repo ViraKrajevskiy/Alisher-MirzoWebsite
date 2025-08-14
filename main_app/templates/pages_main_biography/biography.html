@@ -228,29 +228,7 @@
     <section class="py-5 warm-background">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <h2 class="mb-4">Свяжитесь с нами</h2>
-                    {% if request.user.is_authenticated %}
-                    <form method="post" action="{% url 'contact' %}">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Ваш Email</label>
-                            <input type="email" class="form-control" id="email" value="{{ request.user.email }}" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="subject" class="form-label">Тема</label>
-                            <input type="text" class="form-control" id="subject" name="subject" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Сообщение</label>
-                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn custom-pictures-button">Отправить</button>
-                    </form>
-                    {% else %}
-                    <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a> в аккаунт, чтобы отправить сообщение.</p>
-                    {% endif %}
-                </div>
+                
                 <div class="col-md-6">
                     <h2 class="mb-4">Контакты</h2>
                     <p><i class="fas fa-envelope me-2"></i> alishermirzowork@gmail.com</p>
@@ -295,22 +273,6 @@
                         <li class="mb-2"><i class="bi bi-geo-alt me-2"></i>Ташкент, Узбекистан</li>
                         <li class="mb-2"><i class="bi bi-envelope me-2"></i>alishermirzowork@gmail.com</li>
                     </ul>
-                </div>
-                <div class="col-lg-3">
-                    <div class="newsletter-box">
-                        <h5 class="mb-3">Подписаться на новости</h5>
-                        <form method="post" action="{% url 'subscribe_to_news' %}">
-                            {% csrf_token %}
-                            <div class="mb-3">
-                                {% if request.user.is_authenticated %}
-                                    <input type="email" name="email" class="form-control" value="{{ request.user.email }}" readonly>
-                                {% else %}
-                                    <input type="email" name="email" class="form-control" placeholder="Ваш email" required>
-                                {% endif %}
-                            </div>
-                            <button type="submit" class="btn custom-main-button w-100">Подписаться</button>
-                        </form>
-                    </div>
                 </div>
             </div>
             <hr class="my-4">

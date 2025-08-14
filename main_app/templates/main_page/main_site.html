@@ -191,31 +191,7 @@
     <section class="py-5 warm-background">
         <div class="container">
             <div class="row">
-                {% if request.user.is_authenticated %}
-                <!-- Показываем форму -->
-                <form method="post" action="{% url 'contact' %}">
-                    {% csrf_token %}
-                    <!-- Email пользователя (readonly) -->
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Ваш Email</label>
-                        <input type="email" class="form-control" id="email" value="{{ request.user.email }}" readonly>
-                    </div>
-                    <!-- Тема -->
-                    <div class="mb-3">
-                        <label for="subject" class="form-label">Тема</label>
-                        <input type="text" class="form-control" id="subject" name="subject" required>
-                    </div>
-                    <!-- Сообщение -->
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Сообщение</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn custom-pictures-button">Отправить</button>
-                </form>
-                {% else %}
-                <!-- Показываем сообщение -->
-                <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a> в аккаунт, чтобы отправить сообщение.</p>
-                {% endif %}
+
                 
                 <!-- Контакты -->
                 <div class="col-md-6">
@@ -257,7 +233,7 @@
                         <li class="mb-2"><a href="{% url 'picture_list' %}" class="text-white text-decoration-none">Картины</a></li>
                         <li class="mb-2"><a href="{% url 'album_list' %}" class="text-white text-decoration-none">Альбомы</a></li>
                         <li class="mb-2"><a href="{% url 'book_list' %}" class="text-white text-decoration-none">Литература</a></li>
-                        <li class="mb-2"><a href="{}" class="text-white text-decoration-none">Контакты</a></li>
+                        <!--<li class="mb-2"><a href="{}" class="text-white text-decoration-none">Контакты</a></li>-->
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -267,18 +243,6 @@
                         <li class="mb-2"><i class="bi bi-envelope me-2"></i>alishermirzowork@gmail.com</li>
                     </ul>
                 </div>
-                <form action="{% url 'subscribe' %}" method="post">
-                    {% csrf_token %}
-                    <input type="email" name="email" placeholder="Ваш email" required>
-                    <select name="news_type_id">
-                        <option value="">Все новости</option>
-                        {% for type in news_types %}
-                            <option value="{{ type.id }}">{{ type.name }}</option>
-                        {% endfor %}
-                    </select>
-                    <button type="submit">Подписаться</button>
-                </form>
-
 
             </div>
             <hr class="my-4">

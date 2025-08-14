@@ -21,6 +21,7 @@ class News(BaseModel):
     photo = models.ImageField(upload_to='news/photos/')
     published_at = models.DateTimeField(auto_now_add=True)
     type = models.ForeignKey(NewsType, on_delete=models.SET_NULL, null=True, related_name='news')
+    is_sent = models.BooleanField(default=False, verbose_name="Отправлено подписчикам")
 
     def __str__(self):
         return self.title
@@ -30,7 +31,6 @@ class News(BaseModel):
 
     class Meta:
         ordering = ['-published_at']
-
 
 class Comment(BaseModel):
     news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='comments')
