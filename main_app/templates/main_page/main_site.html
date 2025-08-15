@@ -12,6 +12,7 @@
     <!-- Font Awesome для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/main_pagefile/mainpage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/biography/biography.css' %}">
    
 </head>
 <body>
@@ -27,7 +28,7 @@
                 <ul class="navbar-nav me-auto">
                     
                     <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'biography' %}">Биография</a>
+                        <a class="nav-link" href="{% url 'biography' %}">Биография</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'picture_list' %}">Творчество</a>
@@ -68,28 +69,25 @@
     </nav>
 
 
-    <section class="py-5 warm-background">
-        <div class="container">
-            <div class="bio-card shadow-lg rounded p-4">
-                <div class="row align-items-center">
-                    <!-- Текст -->
-                    <div class="col-md-6">
-                        <h2 class="bio-title">Биография художника</h2>
-                        <h4 class="bio-subtitle">АЛИШЕР МИРЗО</h4>
+    <div class="bio-block">
+        <h1 class="article-title">Алишер Мирзо — Биография</h1>
 
-                        <p>Алишер Мирзо родился в 1948 году в городе Ташкент. Уже в школьные годы у него проявился интерес к изобразительному искусству. С раннего возраста он сделал искусство неотъемлемой частью своей жизни.</p>
-
-                        <p>После окончания средней школы он поступил в Республиканское художественное училище имени П.П. Бенькова, где под руководством наставника А.П. Перова овладел тонкостями живописи.</p>
-
-                        <p>По завершении учёбы продолжил образование в Московском государственном художественном институте имени В.И. Сурикова, где обучался у таких выдающихся мастеров, как Д.Д. Жилинский и А.М. Грицай. </p><a class="nav-link active" href="{% url 'biography' %}">Подробней</a></div>
-                    <!-- Фото -->
-                    <div class="col-md-6 text-center">
-                        <img src="{% static 'images/alisher-mirzo.jpg' %}" alt="Фото художника" class="artist-photo">
-                    </div>
-                </div>
-            </div>
+        <div class="image-float">
+            <img src="{% static 'images/Alisher-Mirzo.jpg' %}" alt="Алишер Мирзо" class="artist-photo">
         </div>
-    </section>
+        <p>
+            Алишер Мирзо родился в 1948 году в городе Ташкент. Уже в школьные годы у него проявился интерес к изобразительному искусству. С раннего возраста он сделал искусство неотъемлемой частью своей жизни.
+После окончания средней школы он поступил в Республиканское художественное училище имени П.П. Бенькова, где под руководством наставника А.П.Перова овладел тонкостями живописи.
+По завершении учёбы продолжил образование в Московском государственном художественном институте имени В.И.Сурикова, где обучался у таких выдающихся мастеров, как Д.Д.Жилинский и А.М.Грицай.
+        </p>
+        <p>
+             Алишер Мирзо – художник, работающий практически во всех жанрах. Свои ранние портреты, пейзажи, натюрморты, бытовые картины художник создает на основе постижения конкретного материала, почерпнутого из жизни узбекского народа. Кстати, этот принцип у него сохраняется и творчестве.
+            Помимо творческого переосмысления традиций искусства, нельзя не отметить, что Алишер Мирзо неразрывными нитями связан с родной землей, жизнью своего народа, его обычаями и обрядами. Персональные выставки Алишера Мирзо с 1977 года и по настоящее время проходили в самых развитых странах мира – США, Германии, Франции, Бельгии, Италии, Норвегии, России, Болгарии, Югославии, Индии, Сирии, Корее, Литве и в Узбекистане. Эти выставки были высоко оценены любителями изобразительного искусства. Многие произведения художника хранятся в известных музеях, галереях и частных коллекциях по всему миру.
+
+            Алишер Мирзо также проявил себя как писатель. Он является членом Союза писателей Узбекистана. В 2015 году был опубликован его первый роман – «Каллахоналик йигитча» («Паренёк из Каллахона»), который был удостоен звания «Лучший роман года». В 2016 году был издан его роман «Мусаввир» («Художник»), а в 2021 году – «Зиёлилар базми» («Вечер интеллигенции»). В 2024 году читателям была представлена его повесть «Онагинам» («Моя мамочка»).
+        </p>
+            <a class="nav-link" href="{% url 'biography' %}">Подробней</a>
+    </div>
     
 
 
@@ -228,13 +226,13 @@
                 <div class="col-lg-2 col-md-6">
                     <h5 class="mb-4">Навигация</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Главная</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Биография</a></li>
+                        <li class="mb-2"><a href="{% url 'home' %}" class="text-white text-decoration-none">Главная</a></li>
+                        <li class="mb-2"><a href="{% url 'biography' %}" class="text-white text-decoration-none">Биография</a></li>
                         <li class="mb-2"><a href="{% url 'picture_list' %}" class="text-white text-decoration-none">Картины</a></li>
                         <li class="mb-2"><a href="{% url 'album_list' %}" class="text-white text-decoration-none">Альбомы</a></li>
                         <li class="mb-2"><a href="{% url 'book_list' %}" class="text-white text-decoration-none">Литература</a></li>
-                        <!--<li class="mb-2"><a href="{}" class="text-white text-decoration-none">Контакты</a></li>-->
-                    </ul>
+                        <li class="mb-2"><a href="{% url 'news_list' %}" class="text-white text-decoration-none">Новости</a></li>
+                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="mb-4">Контакты</h5>

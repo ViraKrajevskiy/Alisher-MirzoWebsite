@@ -538,3 +538,36 @@ body {
         padding: 15px;
     }
 }
+
+
+/* Кнопка аватарки (user-dropdown) */
+.user-dropdown-toggle {
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: #5a3e36;
+    color: #f6e27f !important;
+    transition: background-color 0.3s ease;
+}
+
+.user-dropdown-toggle:hover {
+    background-color: #3b2a26;
+    color: #3b2a26 !important;
+}
+
+/* Стили выпадающего меню */
+.dropdown-menu {
+    background-color: #a18f7f;
+    border: 1px solid #a18f7f;
+    border-radius: 6px;
+}
+
+/* Цвет ссылок внутри */
+.dropdown-menu .dropdown-item {
+    color: #5a3e36;
+    font-weight: 500;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #3b2a26;
+    color: #a18f7f;
+}

@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="{% static 'css/biography/biography.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_pagefile/mainpage.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
@@ -22,6 +23,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
+
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'home' %}">Главная</a>
                     </li>
@@ -58,9 +60,11 @@
                     <a href="{% url 'register' %}" class="btn custom-main-button"><i class="bi bi-person-plus me-1"></i>Регистрация</a>
                 </div>
                 {% endif %}
+
             </div>
         </div>
     </nav>
+
     <div id="scrollIndicator" class="scroll-indicator"></div>
 
 
@@ -74,12 +78,11 @@
             Алишер Мирзо родился в 1948 году в городе Ташкент. Уже в школьные годы у него проявился интерес к изобразительному искусству. С раннего возраста он сделал искусство неотъемлемой частью своей жизни.
             После окончания средней школы он поступил в Республиканское художественное училище имени П.П. Бенькова, где под руководством наставника А.П.Перова овладел тонкостями живописи.
             По завершении учёбы продолжил образование в Московском государственном художественном институте имени В.И.Сурикова, где обучался у таких выдающихся мастеров, как Д.Д.Жилинский и А.М.Грицай.
-            Алишер Мирзо – художник, работающий практически во всех жанрах. Свои ранние портреты, пейзажи, натюрморты, бытовые картины художник создает на основе постижения конкретного материала, почерпнутого из жизни узбекского народа. Кстати, этот принцип у него сохраняется и творчестве.
-        </p>
-        <p>
-            Помимо творческого переосмысления традиций искусства, нельзя не отметить, что Алишер Мирзо неразрывными нитями связан с родной землей, жизнью своего народа, его обычаями и обрядами.
+            Алишер Мирзо – художник, работающий практически во всех жанрах. Свои ранние портреты, пейзажи, натюрморты, бытовые картины художник создает на основе постижения конкретного материала, почерпнутого из жизни узбекского народа. Кстати, этот принцип у него сохраняется и творчестве. Помимо творческого переосмысления традиций искусства, нельзя не отметить, что Алишер Мирзо неразрывными нитями связан с родной землей, жизнью своего народа, его обычаями и обрядами.
             Персональные выставки Алишера Мирзо с 1977 года и по настоящее время проходили в самых развитых странах мира – США, Германии, Франции, Бельгии, Италии, Норвегии, России, Болгарии, Югославии, Индии, Сирии, Корее, Литве и в Узбекистане. Эти выставки были высоко оценены любителями изобразительного искусства.
             Многие произведения художника хранятся в известных музеях, галереях и частных коллекциях по всему миру.
+        </p>
+        <p>
             Алишер Мирзо также проявил себя как писатель. Он является членом Союза писателей Узбекистана. В 2015 году был опубликован его первый роман – «Каллахоналик йигитча» («Паренёк из Каллахона»), который был удостоен звания «Лучший роман года».
             В 2016 году был издан его роман «Мусаввир» («Художник»), а в 2021 году – «Зиёлилар базми» («Вечер интеллигенции»). В 2024 году читателям была представлена его повесть «Онагинам» («Моя мамочка»).
             Профессионализм, идейное содержание и самобытный стиль творчества Алишера Мирзо были высоко оценены, и он удостоен множества званий и наград.
@@ -100,32 +103,108 @@
                 <div class="timeline">
                     <div class="timeline-column">
                         <div class="timeline-item left highlight">
+                            <div class="timeline-year">1948</div>
+                            <div class="timeline-desc">Родился 21 марта 1948 года в городе Ташкенте.</div>
+                        </div>
+                        <div class="timeline-item left highlight">
                             <div class="timeline-year">1964</div>
-                            <div class="timeline-desc">Учащийся Республиканского художественного училища им. П.П. Бенькова. Руководитель - А. П. Перов</div>
+                            <div class="timeline-desc">Учащийся Республиканского художественного училища им. П.П.Бенькова. Руководитель - А. П. Перов.</div>
                         </div>
-
-                        <div class="timeline-item left">
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1968</div>
+                            <div class="timeline-desc">Студент Московского государственного художественного института им. В. И. Сурикова. Руководители – действительный член Академии художеств России, Народный художник СССР, лауреат государственных премий Д. Д. Жилинский и профессор С. Н. Шильников.</div>
+                        </div>
+                        <div class="timeline-item left highlight">
                             <div class="timeline-year">1974</div>
-                            <div class="timeline-desc">Преподаватель архитектурного факультета Ташкентского политехнического института им. Беруни</div>
+                            <div class="timeline-desc">Преподаватель архитектурного факультета Ташкентского политехнического института им. Беруни.</div>
                         </div>
-
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1976</div>
+                            <div class="timeline-desc">Участник ряда Всесоюзных выставок.</div>
+                        </div>
                         <div class="timeline-item left highlight">
                             <div class="timeline-year">1977</div>
-                            <div class="timeline-desc">Первая персональная выставка в Ташкенте. Участие в передвижной выставке «Молодежь страны»</div>
+                            <div class="timeline-desc">Первая персональная выставка в Ташкенте.</div>
                         </div>
-
-                        <div class="timeline-item left">
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1977</div>
+                            <div class="timeline-desc">Участник передвижной выставки «Молодежь страны», проходившей в Венгрии, Болгарии, Румынии и Чехословакии.</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1978</div>
+                            <div class="timeline-desc">Преподаватель Ташкентского театрально-художественного института им. А. Н. Островского.</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1978</div>
+                            <div class="timeline-desc">Член Союза художников Узбекистана.</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1979</div>
+                            <div class="timeline-desc">Участник выставки молодых художников Узбекистана в Москве.</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1980</div>
+                            <div class="timeline-desc">Участник Всесоюзной выставки молодых художников, проходившей в Ташкенте.</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1981</div>
+                            <div class="timeline-desc">Творческая командировка в Болгарию (Хасково).</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1981</div>
+                            <div class="timeline-desc">Участник Декады Узбекистана в Таджикистане (Душанбе).</div>
+                        </div>
+                        <div class="timeline-item left highlight">
                             <div class="timeline-year">1983</div>
-                            <div class="timeline-desc">Персональная выставка в Центральном выставочном зале Ташкента. Участие в «Днях культуры Узбекистана в ФРГ»</div>
+                            <div class="timeline-desc">Персональная выставка картин в Центральном выставочном зале города Ташкента.</div>
                         </div>
-
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1983</div>
+                            <div class="timeline-desc">Участник торжественного мероприятия «Дни культуры Узбекистана в ФРГ».</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1986</div>
+                            <div class="timeline-desc">Награждение Дипломом Академии художеств России.</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1987</div>
+                            <div class="timeline-desc">Персональная выставка работ в Улан-Баторе (Монголия).</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1988</div>
+                            <div class="timeline-desc">Персональная выставка работ в Дамаске (Сирия).</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1988</div>
+                            <div class="timeline-desc">Творческая командировка в Македонию (Югославия).</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1988</div>
+                            <div class="timeline-desc">Персональная выставка работ в Центральном выставочном зале Москвы.</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1990</div>
+                            <div class="timeline-desc">Персональная выставка работ в Академии Бирла и миссии Рама Кришны в Калькутте (Индия).</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1990</div>
+                            <div class="timeline-desc">Персональная выставка, посвященная жизни и творчеству Абдуллы Кадыри (Ташкент).</div>
+                        </div>
                         <div class="timeline-item left highlight">
                             <div class="timeline-year">1992</div>
-                            <div class="timeline-desc">Присвоено звание «Народный художник Узбекистана»</div>
+                            <div class="timeline-desc">Присвоено звание «Народный художник Узбекистана».</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1993</div>
+                            <div class="timeline-desc">Персональная выставка картин в Ташкенте.</div>
+                        </div>
+                        <div class="timeline-item left highlight">
+                            <div class="timeline-year">1994</div>
+                            <div class="timeline-desc">Лауреат Государственной премии имени Абдуллы Кадыри.</div>
                         </div>
                     </div>
-
                     <div class="timeline-center">
+                        <div class="timeline-center-item birth-item"></div>
                         <div class="timeline-center-line"></div>
                         <div class="timeline-center-item birth-item">1948</div>
                         <div class="timeline-center-line"></div>
@@ -139,33 +218,111 @@
                         <div class="timeline-center-line"></div>
                         <div class="timeline-center-item">2024</div>
                         <div class="timeline-center-line"></div>
+                        <div class="timeline-center-item birth-item"></div>
                     </div>
 
                     <div class="timeline-column">
-                        <div class="timeline-item right">
-                            <div class="timeline-year">1968</div>
-                            <div class="timeline-desc">Студент Московского государственного художественного института им. В. И. Сурикова</div>
+                        <div class="timeline-item right ">
+                            <div class="timeline-year">1995</div>
+                            <div class="timeline-desc">Персональная выставка работ в Республиканском центре детского творчества.</div>
                         </div>
-
-                        <div class="timeline-item right highlight">
-                            <div class="timeline-year">1978</div>
-                            <div class="timeline-desc">Член Союза художников Узбекистана. Преподаватель Ташкентского театрально-художественного института</div>
-                        </div>
-
-                        <div class="timeline-item right">
-                            <div class="timeline-year">1986</div>
-                            <div class="timeline-desc">Награждение Дипломом Академии художеств России</div>
-                        </div>
-
-                        <div class="timeline-item right highlight">
-                            <div class="timeline-year">1994</div>
-                            <div class="timeline-desc">Лауреат Государственной премии имени Абдуллы Кадыри</div>
-                        </div>
-
                         <div class="timeline-item right">
                             <div class="timeline-year">1997</div>
-                            <div class="timeline-desc">Избран действительным членом Академии художеств Узбекистана. Профессор Национального института живописи и дизайна</div>
+                            <div class="timeline-desc">избран действительным членом Академии художеств Узбекистана.</div>
                         </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">1997</div>
+                            <div class="timeline-desc">профессор Национального института живописи и дизайна им. Камолиддина Бехзода.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">1997</div>
+                            <div class="timeline-desc">участник первой выставки, действительных членов Академии художеств Узбекистана.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">1998</div>
+                            <div class="timeline-desc">награжден званием «Лучший профессор года».</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">1999</div>
+                            <div class="timeline-desc">награжден орденом «Эль-юрт хурмати» (За заслуги перед Отечеством»).</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">1998</div>
+                            <div class="timeline-desc">творческая командировка во Францию.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">1999</div>
+                            <div class="timeline-desc">юбилейная персональная выставка (Ташкент).</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2001</div>
+                            <div class="timeline-desc">творческая командировка в Германию, где прошли персональные выставки.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2002</div>
+                            <div class="timeline-desc">персональная выставка художников, действительных членов Академии художеств Узбекистана Алишера Мирзо, Баходира Джалола и Акмаля Нура.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2005</div>
+                            <div class="timeline-desc">персональная выставка работ «Устоз-шогирд» (Наставник ученик).</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2005</div>
+                            <div class="timeline-desc">участник юбилейной выставки, действительных членов Академии художеств Узбекистана.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2007</div>
+                            <div class="timeline-desc">участник Ташкентского Международного Биеннале.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2008</div>
+                            <div class="timeline-desc">творческая командировка в США.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2009</div>
+                            <div class="timeline-desc">персональная выставка в городе Каунас, Латвия.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2009</div>
+                            <div class="timeline-desc">персональная выставка «Песня Ташкента» в Центральном Доме Художника, Ташкент.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2010</div>
+                            <div class="timeline-desc">персональная выставка в галерее Анны Царев в Нью-Йорке, США.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2011</div>
+                            <div class="timeline-desc">присвоено звание почетного академика Российской академии художеств.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2013</div>
+                            <div class="timeline-desc">персональная выставка «Накшинкор олам» в галерее изобразительного искусства Узбекистана.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2015</div>
+                            <div class="timeline-desc">был представлен первый роман «Каллахоналик йигитча», получивший высокое признание в номинации «Лучший роман года».</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2016</div>
+                            <div class="timeline-desc">были опубликован и представлен любителям литературы роман «Мусаввир».</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2021</div>
+                            <div class="timeline-desc">написан роман «Зиёлилар базми».</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2023</div>
+                            <div class="timeline-desc">персональная выставка, посвященная 75-летию со дня его рождения «Шакл мазмуни сари» («К содержанию через форму»).</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2023</div>
+                            <div class="timeline-desc">персональная выставка «Легенда Востока» в Gallery 81.</div>
+                        </div>
+                        <div class="timeline-item right">
+                            <div class="timeline-year">2024</div>
+                            <div class="timeline-desc">издана повесть «Онагинам».</div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -265,7 +422,8 @@
                         <li class="mb-2"><a href="{% url 'picture_list' %}" class="text-white text-decoration-none">Картины</a></li>
                         <li class="mb-2"><a href="{% url 'album_list' %}" class="text-white text-decoration-none">Альбомы</a></li>
                         <li class="mb-2"><a href="{% url 'book_list' %}" class="text-white text-decoration-none">Литература</a></li>
-                    </ul>
+                        <li class="mb-2"><a href="{% url 'news_list' %}" class="text-white text-decoration-none">Новости</a></li>
+                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5 class="mb-4">Контакты</h5>
