@@ -1,5 +1,6 @@
 from django.urls import path
 
+from main_app.views.politic.politics import comfidence
 from main_app.views.print_filter_obj.main_filter_print import (
     main_page
 )
@@ -30,6 +31,7 @@ from main_app.views_sets.user_account.user_account import user_account_see
 urlpatterns = [
     path('', main_page, name='home'),
 
+    path('politics/',comfidence, name ='comfidence'),
     # данные пользователя
     path('password-reset/', request_password_reset, name='request_password_reset'),
     path('confirm-code/', confirm_code_and_reset_password, name='confirm_code'),
