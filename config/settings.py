@@ -16,16 +16,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_HOST = 'smtp-relay.brevo.com'
+EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'alishermirzowork@gmail.com'          # ← твоя почта
-EMAIL_HOST_PASSWORD = 'bzsfnhdrxnqdofcb'    # ← тот 16-значный пароль
-DEFAULT_FROM_EMAIL = 'ARTIST WRITER <alishermirzowork@gmail.com>'
-SITE_URL = 'SITE_URL = "http://164.92.252.126'
+EMAIL_HOST_USER = '93e4dd002@smtp-brevo.com'          # ← твоя почта
+EMAIL_HOST_PASSWORD = 'JQC1tLPgGd0UIrh6'    # ← тот 16-значный пароль
+DEFAULT_FROM_EMAIL = '93e4dd002@smtp-brevo.com'
+SITE_URL = 'http://167.172.190.100'
+
 
 # Application definition
+#dss mkmlkkmmlkm
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -34,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main_app.apps.MainAppConfig',
+    'main_app',
     'dashboard',
     'rest_framework',
 ]
@@ -71,7 +73,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
