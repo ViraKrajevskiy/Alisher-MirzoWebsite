@@ -1,1 +1,0 @@
-from main_app.views_sets.contact_view.contact_view_message import contact_view

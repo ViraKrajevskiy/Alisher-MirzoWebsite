@@ -62,6 +62,7 @@ def login_view(request):
             })
 
     return render(request, 'autorization_account/login/login.html')
+
 def logout_view(request):
     logout(request)
     return redirect('login')
